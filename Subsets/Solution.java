@@ -1,3 +1,8 @@
+/**
+ * Time Complexity : O(2^n)
+ * Space Complexity: O(1) - stack space 
+ * Leetcode - Yes
+ */
 import java.util.*;
 
 class Subsets {
@@ -16,6 +21,23 @@ class Subsets {
             tempList.remove(tempList.size() - 1);
         }
     }
+
+
+    public List<List<Integer>> subsetsIter(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        result.add(new ArrayList<>());
+        for(int i=0;i<nums.length;i++){
+            List<List<Integer>> currResult = new ArrayList<>(result);
+            for(List<Integer> list : currResult){
+                List<Integer> tempList = new ArrayList<>(list);
+                tempList.add(nums[i]);
+                result.add(tempList);
+            }
+        }
+
+        return result;
+    
+    }
 }
 
 class Solution {
@@ -23,6 +45,6 @@ class Solution {
         System.out.println("Subsets");
         Subsets obj = new Subsets();
         int[] nums = {1,2,3};
-        System.out.println(obj.subsets(nums));
+        System.out.println(obj.subsetsIter(nums));
     }
 }

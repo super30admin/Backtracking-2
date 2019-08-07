@@ -1,3 +1,9 @@
+/**
+ * Time Complexity : O(m * 2^n) - m is for palindrome check
+ * Space Complexity: O(1) - stack space 
+ * Leetcode - Yes
+ */
+
 import java.util.*;
 class PalindromePartition {
     public List<List<String>> partition(String s) {
