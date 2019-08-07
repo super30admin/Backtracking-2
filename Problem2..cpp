@@ -20,22 +20,26 @@ public:
     }
 private:
     bool checkIfPalindrome(string s){
-        string temp = "";
-        for(int x = s.size()-1; x>=0; x--){
-            temp+=s[x];
+        int left = 0; int right = s.size()-1;
+        while(left<right){
+            if(s[left]!=s[right]){
+                return false;
+            }
+            left++; right--;
         }
-        if(s == temp){
-            return true;
-        }
-        return false;
+        return true;
     }
     void dfs(vector<vector<string>>& retVec, vector<string>& path, string s, int index){
         if(index >= s.size()){
             retVec.push_back(path);
             return;
         }
+        string temp;
         for(int x = index+1; x <= s.size(); x++){
-            string temp = s.substr(index,x);
+            temp = "";
+            for(int i = index; i<x; i++){
+                temp += s[i];
+            }
             if(checkIfPalindrome(temp)){
                 path.push_back(temp);
                 dfs(retVec,path,s,x);
