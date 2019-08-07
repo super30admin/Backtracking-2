@@ -17,7 +17,7 @@ class Solution {
     
     public void findSubSets(int[] nums, int index, List<List<Integer>> result,List<Integer> tempList){
         System.out.println(tempList);
-        result.add(tempList);
+        result.add(new ArrayList<Integer>(tempList)); // Added this new Arraylist.
         for(int i = index; i< nums.length;i++){
         // take the number
             tempList.add(nums[i]);
