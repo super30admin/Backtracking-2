@@ -1,8 +1,8 @@
 /**
  * LeetCode Execution: Smooth
  * 
- * Time Complexity: O()
- * Space Complexity: O(1), Not accounting for the output
+ * Time Complexity: O(2^n)
+ * Space Complexity: O(n), Not accounting for the output
  * 
  * 
  */
