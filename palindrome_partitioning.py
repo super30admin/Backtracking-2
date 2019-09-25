@@ -9,9 +9,9 @@ class Solution(object):
                                             { "aba" , palindrome_partitioning("caba") } +
                                             { "abacaba"}
 
-        Time complexity :  O(n^2)
+        Time complexity :  O(c^n)
       
-        Space complexity : O(n^2)
+        Space complexity : O(n)
       
         Run on leet code : yes
       
@@ -23,10 +23,9 @@ class Solution(object):
         if input_string == "":
             return [[""]]
         
-        return  self._palindrome_partitioning(input_string[0], input_string) + (
+        return self._palindrome_partitioning(input_string[0], input_string) + (
                 [[input_string]] if self.is_palindrome(input_string) else [])
         
-    
     def is_palindrome(self, s):
         """
         Checks if string is palindrome
@@ -88,4 +87,4 @@ class Solution(object):
 
 
 if __name__ == "__main__" :
-    print(Solution().partition("aaa"))
+    print(Solution().partition("aaaaa"))

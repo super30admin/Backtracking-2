@@ -10,7 +10,7 @@ class Solution(object):
       
         Time complexity :  O(2^n)
       
-        Space complexity : O(2^n)
+        Space complexity : O(n)
       
         Run on leet code : yes
         
