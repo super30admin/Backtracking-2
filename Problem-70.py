@@ -21,4 +21,26 @@ class Solution(object):
             self.backtrack(nums,path+[nums[i]],res,i+1)
                 
             
+      #backtrack problem      
+   class Solution(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        res=[]
+        path=[]
+        index=0
+        self.backtrack(nums,path,res,index)
+        return res
+    
+    def backtrack(self,nums,path,res,index):
+        res.append(path[:])
+        
+        for i in range(index,len(nums)):
+            path.append(nums[i])
+            self.backtrack(nums,path,res,i+1)
+            path.pop()
+                
+            
             
