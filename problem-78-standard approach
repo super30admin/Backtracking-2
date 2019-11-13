@@ -1,0 +1,52 @@
+/*
+Time Complexity: 2^n
+Space  Complexity: n^2
+
+Leetcode : successful
+
+Approach: 
+
+start with empty list
+add one element to the list, consider it as base list and go ahead and take another element from the list recursively.
+once you are done traversing all the paths recursively come back, with one element in the list, which was added.
+remove this element from the arraylist
+start exploring another element and follow its path
+
+something like:
+
+1,12,123
+2,23,
+3
+*/
+
+class Solution {
+    
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        
+        result= new ArrayList<>();
+        
+        
+        result.add(new ArrayList<>());
+        recursiveFor(nums,new ArrayList<>(),0);
+        
+        
+        return result;
+    }
+    
+    void recursiveFor(int [] nums, List<Integer> arl,int index)
+    {
+        if(index>=nums.length) return;
+        // base case
+        for(int i=index;i<nums.length;i++)
+        {
+            arl.add(nums[i]);
+            result.add(new ArrayList<>(arl));
+            recursiveFor(nums,new ArrayList<>(arl),i+1);
+            arl.remove(arl.size()-1);
+            
+        }
+       
+        
+    }
+}
