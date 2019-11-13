@@ -3,9 +3,7 @@
  * Space Complexity: O(n)
  * Runs on Leetcode: yes
  * Problems Solving: 
- *      Still a bit confused on how backtracking code is working.
- *      I got this answer through trial and error
- *      I will have to practice more problems to better my understanding
+ *  I had to walk through the solution a couple of times to understand how backtracking was working
  */
 class Solution {
     List<List<Integer>> result;
@@ -20,9 +18,12 @@ class Solution {
         List<Integer> temp = new ArrayList<>(current);
         temp.remove(0);
         result.add(temp);
-        for(int i = index + 1; i < nums.length; i++) {
+        
+        for(int i = index + 1; i < nums.length; i++){
+            // recursive step
             backtrack(nums, i, current);
         }
+        // backtracking step
         current.remove(current.size() - 1);
     }
 }
