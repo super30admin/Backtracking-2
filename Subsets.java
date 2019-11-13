@@ -3,7 +3,6 @@
  * Space Complexity: O(n)
  * Runs on Leetcode: yes
  * Problems Solving: 
- *  I had to walk through the solution a couple of times to understand how backtracking was working
  */
 class Solution {
     List<List<Integer>> result;
@@ -13,17 +12,11 @@ class Solution {
         return result;
     }
     private void backtrack(int[] nums, int index, List<Integer> current){
-        current.add(nums[index]);
         result.add(new ArrayList<>(current));
-        List<Integer> temp = new ArrayList<>(current);
-        temp.remove(0);
-        result.add(temp);
-        
-        for(int i = index + 1; i < nums.length; i++){
-            // recursive step
-            backtrack(nums, i, current);
+        for(int i = index; i < nums.length; i++){
+            current.add(nums[i]);
+            backtrack(nums, i+1, current);
+            current.remove(current.size() - 1);
         }
-        // backtracking step
-        current.remove(current.size() - 1);
     }
 }
