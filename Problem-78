@@ -1,0 +1,46 @@
+/*
+
+Challenges: Please help me understand the space complexity of this approach
+Time Complexity: 2^n
+SpaceComplexity: n2
+
+Leetcode: Successful:
+
+Approach:
+
+recursively, either choose a number or dont choose a number, at each recursion add the values to the resultant set.
+
+
+*/
+
+class Solution {
+    
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+
+        result = new ArrayList<>();
+        List<Integer> arl = new ArrayList<>();
+
+        result.add(new ArrayList<>(arl));
+        recursive(nums,arl,0);
+        
+        return result;
+    }
+    
+    void recursive(int [] nums,List<Integer> arl, int i)
+    {
+        // base case 
+        if(i>=nums.length) return;
+        
+        arl.add(nums[i]);
+        // progress case
+        result.add(new ArrayList<>(arl));
+        
+        // choose
+         recursive(nums,new ArrayList<>(arl),i+1);
+        
+        // not to choose
+        arl.remove(arl.size()-1);
+        recursive(nums,new ArrayList<>(arl),i+1);
+    }
+}
