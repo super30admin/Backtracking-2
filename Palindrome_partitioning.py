@@ -1,5 +1,5 @@
 # Runs on Leetcode
-    # Runtime - O()
+    # Runtime - O(n^n) where n is length of string
     # Memory - O(1) without recursive stack
 
 
