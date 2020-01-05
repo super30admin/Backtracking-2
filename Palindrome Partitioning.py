@@ -23,7 +23,7 @@ class Solution:
         #Logic
         for i in range(index, len(s)):
             if self.isPalidrome(s, index, i):
-                temp.append(s[index:i+1])
+                temp.append(s[index:i+1])               #String Slicing requires +1 to consider the last character
                 self.backtrack(s, i+1, temp)
                 #backtracking step by removing the last element
                 temp.pop(-1)
