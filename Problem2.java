@@ -1,4 +1,4 @@
-// Time Complexity - O(2^n)
+// Time Complexity - O(n*2^n)
 // Space Complexity - O(1)
 // This Solution worked on LeetCode
 
