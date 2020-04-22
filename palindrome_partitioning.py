@@ -1,6 +1,6 @@
 """
-// Time Complexity : O(m*2^n) m-> target, n-> number of candidates
-// Space Complexity : O(maxDepth)
+// Time Complexity : O(n^2) n - number of characters in the string
+// Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 // Your code here along with comments explaining your approach
