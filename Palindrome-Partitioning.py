@@ -54,8 +54,7 @@ class Solution:
 
         def helper(index):
             if index==len(s):
-                if all([is_valid(sub) for sub in memory]):
-                    res.append(memory[:])
+                res.append(memory[:])
                 return
             for i in range(index+1,len(s)+1):
                 #action
@@ -65,7 +64,5 @@ class Solution:
                     helper(i)
                     #backtrack
                     memory.pop()
-        def is_valid(sub):
-            return (sub==sub[::-1])
         helper(0)
         return res
