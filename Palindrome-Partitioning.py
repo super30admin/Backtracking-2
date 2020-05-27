@@ -32,3 +32,40 @@ class Solution:
         
         helper(0)
         return res
+    
+    
+#Problem 2: Palindrome Partitioning
+#Time Complexity: O(n2^n)
+#Space Complexity: O(n)
+'''
+A better solution would be to check at every string if it's a palindrome
+before continuing the recursion and the backtrack. On average it is WAY better
+since as soon as there's one that is not a palindrome, we cut the branch entirely.
+Although it doesn't change worse case complexity (for example "aaaaaaaaaaa"). I
+coded a more intuitive recursion style for backtrack.
+'''
+
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        if not s:
+            return []
+        memory=[]
+        res=[]
+
+        def helper(index):
+            if index==len(s):
+                if all([is_valid(sub) for sub in memory]):
+                    res.append(memory[:])
+                return
+            for i in range(index+1,len(s)+1):
+                #action
+                if(s[index:i]==s[index:i][::-1]):
+                    memory.append(s[index:i])
+                    #recurse
+                    helper(i)
+                    #backtrack
+                    memory.pop()
+        def is_valid(sub):
+            return (sub==sub[::-1])
+        helper(0)
+        return res
