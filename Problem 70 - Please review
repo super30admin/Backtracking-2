@@ -1,0 +1,28 @@
+PROBLEM 1 -
+
+// Time Complexity :O(2^n)
+ // Space Complexity :
+ // Did this code successfully run on Leetcode :Yes
+ 
+class Solution {
+    func subsets(_ nums: [Int]) -> [[Int]] {
+        
+        var res = [[Int]]()
+        
+        var emptySet = [Int]()
+        res.append(emptySet)
+        
+        for i in nums.indices {
+            var count = res.count
+            for var set in res {
+                set.append(nums[i])
+                res.append(set)
+            }   
+        }
+        return res
+    }
+}
+
+
+ 
+ 
