@@ -1,4 +1,4 @@
-// Time Complexity : O(2^n). n is the length of the string
+// Time Complexity : O(n*2^n). n is the length of the string
 // Space Complexity :O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this :No
