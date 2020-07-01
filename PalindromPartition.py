@@ -33,4 +33,4 @@ class Solution:
         return True
         
 Time Complexity is O(2 raise to power n)
-Space Complexity is O(n)
+Space Complexity is O(n) as only one temp list is created for all the recursive calls, passed by reference! self.result is returned so not a part of space
