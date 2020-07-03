@@ -1,0 +1,94 @@
+// Time Complexity :O(2^n) - at each point we either choose and if we don't choose, we are trying to check for a different kind of partitioning possibility - here n is the number of characters in the string.
+// Space Complexity : O(n)- we choose one temporary list and keep adding and removing elements from that.
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach: Used a backtracking approach.Attach,recurse and backtrack
+
+
+
+class Solution {
+    List<List<String>> result;
+    public List<List<String>> partition(String s) {
+        result=new ArrayList<>();
+        if(s==null || s.length()==0) return result;
+        backtrack(s,new ArrayList<String>(),0);
+        return result;
+    }
+    
+    private void backtrack(String s,List<String> temp,int index){
+        if(index==s.length()){
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+        for(int i=index;i<s.length();i++){
+            if(check(s,index,i)){
+                //action
+            temp.add(s.substring(index,i+1));
+                //recurse
+            backtrack(s,temp,i+1);
+                //backtrack
+            temp.remove(temp.size()-1);
+        } 
+        }
+       
+    }
+    
+    private boolean check(String str, int start, int end) {
+        while(start<=end) {
+            if(str.charAt(start) != str.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+}
+
+
+// Time Complexity : O(2^n)
+// Space Complexity : O(n*n)- we create an extra list at levels. Worst case we create n lists each of size n. Where n is the number of elements
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Yes, I failed to understand the recursive mechanism in the beginning.
+
+
+// Your code here along with comments explaining your approach: Recursive solution by creating a new list at every point of a valid palindrome.
+
+class Solution {
+    List<List<String>> result;
+    public List<List<String>> partition(String s) {
+        result=new ArrayList<>();
+        if(s==null || s.length()==0) return result;
+        helper(s,new ArrayList<String>(),0);
+        return result;
+    }
+    
+    private void helper(String s,List<String> temp,int index){ 
+        if(index==s.length()){
+            result.add(new ArrayList<>(temp));
+            return;
+        }  
+       
+    for(int i=index;i<s.length();i++){
+        
+            if(check(s,index,i)){
+                //action
+            ArrayList<String> current = new ArrayList<>(temp);
+            current.add(s.substring(index,i+1));
+                //recurse
+            helper(s,current,i+1);
+        } 
+        }
+    }
+    
+    private boolean check(String str, int start, int end) {
+        while(start<=end) {
+            if(str.charAt(start) != str.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+}
