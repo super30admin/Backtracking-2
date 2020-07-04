@@ -7,8 +7,11 @@ class Solution:
     def backtrack(self, nums, result, index, temp):
         result.append(temp[:])
         for i in range(index, len(nums)):
+            #action
             temp.append(nums[i])
+            #recurse
             self.backtrack(nums, result, i+1, temp)
+            #backtrack
             temp.pop()
 
 
