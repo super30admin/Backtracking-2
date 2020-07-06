@@ -1,0 +1,66 @@
+/** Back Tracking Solution **/
+
+// Time Complexity : O(2^n * n) - for the possibilities 2^n, n for copying the elements.
+// Space Complexity : O(n) - we are using only one temporary list and backtracking the changes.
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach: Backtracking solution.
+
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result=new ArrayList<>();
+        if(nums==null || nums.length==0) return result;
+        backtrack(nums,new ArrayList<>(),0);
+        return result;
+    }
+    
+    private void backtrack(int[] nums,List<Integer> temp,int start){
+       //base
+        //logic
+        result.add(new ArrayList<>(temp));
+        for(int i=start;i<nums.length;i++){
+           //action
+            temp.add(nums[i]);
+           //recurse
+            backtrack(nums,temp,i+1); //mot start+1
+           //backtrack
+            temp.remove(temp.size()-1);
+        }
+    }
+}
+
+/** Recursive Solution **/
+
+// Time Complexity : O(2^n * n) - for the possibilities 2^n, n for copying the elements.
+// Space Complexity : O(2^n * n) - we are using a temporary list at every possibility.
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach: Recursive solution. Same in terms of asymptotic time complexity but, occupies more space as we create a new array list at every level.
+
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result=new ArrayList<>();
+        if(nums==null || nums.length==0) return result;
+        helper(nums,new ArrayList<>(),0);
+        return result;
+    }
+    
+    private void helper(int[] nums,List<Integer> temp,int i){
+       //base
+        if(i==nums.length) 
+        {
+        result.add(new ArrayList<>(temp));
+        return;
+        }
+           
+        //logic
+        //don't choose
+        helper(nums,new ArrayList<>(temp),i+1);   
+        // choose
+        temp.add(nums[i]);
+        helper(nums,new ArrayList<>(temp),i+1);
+         
+        }
+    }
