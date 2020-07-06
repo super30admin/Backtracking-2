@@ -1,4 +1,4 @@
-// Time Complexity :O(2^n) - at each point we either choose and if we don't choose, we are trying to check for a different kind of partitioning possibility - here n is the number of characters in the string.
+// Time Complexity :O(2^n *n) - at each point we either choose and if we don't choose, we are trying to check for a different kind of partitioning possibility - here n is the number of characters in the string.
 // Space Complexity : O(n)- we choose one temporary list and keep adding and removing elements from that.
 // Did this code successfully run on Leetcode :Yes
 // Any problem you faced while coding this : No
