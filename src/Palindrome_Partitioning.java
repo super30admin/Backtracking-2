@@ -1,9 +1,13 @@
 import java.util.*;
 /********************************************Using Backtracking*******************************************/
-//Time Complexity :
-//Space Complexity : 
+//Time Complexity : O(n2^n), n is the length of the string
+//Space Complexity : O(n), single list used
 //Did this code successfully run on Leetcode : Yes
 //Any problem you faced while coding this : No
+
+/*  Using Backtracking, we check whether the substring considered is palindrome or not
+2.  If its palindrome, we check the remaining possible substrings
+3.  If its not palindrome, we backtrack to the previous state and check for other possible substrings from that state*/
 
 public class Palindrome_Partitioning {
 	static List<List<String>> result;
@@ -54,8 +58,8 @@ public class Palindrome_Partitioning {
 }
 
 /********************************************Using Recursion*******************************************/
-//Time Complexity :
-//Space Complexity :
+//Time Complexity :O(n* 2^n), n is the length of the string
+//Space Complexity :O(n * 2^n) as a new list created at each recursion point
 //Did this code successfully run on Leetcode : Yes
 //Any problem you faced while coding this : No
 

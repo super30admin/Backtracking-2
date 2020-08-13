@@ -1,9 +1,11 @@
 import java.util.*;
 /********************************************Using Recursion*******************************************/
-//Time Complexity :
-//Space Complexity :
+//Time Complexity : O(n* 2^n), n is length of nums array
+//Space Complexity : O(n* 2^n) as a new list created at each recursion point
 //Did this code successfully run on Leetcode : Yes
 //Any problem you faced while coding this : No
+
+/* Using recursion, we create a new list each time we call recursion once choosing the element and once not choosing the element*/
 
 public class Subsets {
 	List<List<Integer>> result;
@@ -43,11 +45,12 @@ public class Subsets {
 }
 
 /********************************************Using Backtracking*******************************************/
-//Time Complexity :
-//Space Complexity : 
+//Time Complexity : O(2^n), n is length of nums array
+//Space Complexity :O (n), single list used
 //Did this code successfully run on Leetcode : Yes
 //Any problem you faced while coding this : No
 
+/* Using backtracking, we update the same list when we call backtracking each time and whenever we have to append the result, we create a copy of the list and add*/
 class Subsets_backtrack {
 	static List<List<Integer>> result;
 	public static List<List<Integer>> subsets(int[] nums) {
