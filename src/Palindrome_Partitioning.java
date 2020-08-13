@@ -5,9 +5,9 @@ import java.util.*;
 //Did this code successfully run on Leetcode : Yes
 //Any problem you faced while coding this : No
 
-/*  Using Backtracking, we check whether the substring considered is palindrome or not
-2.  If its palindrome, we check the remaining possible substrings
-3.  If its not palindrome, we backtrack to the previous state and check for other possible substrings from that state*/
+/* Using Backtracking, we check whether the substring considered is palindrome or not
+ * If its palindrome, we check the remaining possible substrings
+ * If its not palindrome, we backtrack to the previous state and check for other possible substrings from that state*/
 
 public class Palindrome_Partitioning {
 	static List<List<String>> result;
