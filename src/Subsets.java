@@ -1,6 +1,6 @@
 import java.util.*;
 /********************************************Using Recursion*******************************************/
-//Time Complexity : O(n* 2^n), n is length of nums array
+//Time Complexity : O(2^n), n is length of nums array
 //Space Complexity : O(n* 2^n) as a new list created at each recursion point
 //Did this code successfully run on Leetcode : Yes
 //Any problem you faced while coding this : No
@@ -59,6 +59,7 @@ class Subsets_backtrack {
 		if(nums == null || nums.length == 0)
 			return result;
 
+		/** Arrays.sort(nums);	https://leetcode.com/problems/subsets-ii/*/
 		backtrack(nums, new ArrayList<>(), 0);
 		return result;
 	}
@@ -69,6 +70,8 @@ class Subsets_backtrack {
 		//logic
 		result.add(new ArrayList<>(temp));
 		for(int i = index; i < nums.length; i++){
+			/** if(i > index && nums[i] == nums[i-1])
+                continue; https://leetcode.com/problems/subsets-ii/**/
 			//action
 			temp.add(nums[i]);
 			//recurse
