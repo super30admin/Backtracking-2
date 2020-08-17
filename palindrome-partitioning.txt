@@ -1,0 +1,52 @@
+checking 0
+checking loop 0-ith-0
+is palindrome check till 0--0
+adding to list a
+checking 1
+checking loop 1-ith-1
+is palindrome check till 1--1
+adding to list a
+checking 2
+checking loop 2-ith-2
+is palindrome check till 2--2
+adding to list b
+removing to list b
+removing to list a
+checking loop 1-ith-2
+is palindrome check till 1--2
+removing to list a
+checking loop 0-ith-1
+is palindrome check till 0--1
+adding to list aa
+checking 2
+checking loop 2-ith-2
+is palindrome check till 2--2
+adding to list b
+removing to list b
+removing to list aa
+checking loop 0-ith-2
+is palindrome check till 0--2
+
+
+
+index = 0, i=0 
+temp - a
+(remove a again templl have a alone)
+index = 0, i=1
+temp - add aa,
+backtrack(s, 2, temp)
+	--index=2,i=2,
+	temp.add(b);	
+	result.add(aa, b)
+
+		index = 1, i=1
+			temp - a, a		<------------|
+				(removed a from temp)	 |
+				i =2, ab not palindrome	 |
+										 |
+										 |
+				index = 2, i=2			 |
+					temp - a, a, b		 |
+						return; ---------|
+						
+					
