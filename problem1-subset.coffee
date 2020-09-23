@@ -1,12 +1,18 @@
 #// Time Complexity : O(N^N)
-#// Space Complexity : O(N^3) due to palindrome check at each node
+#// Space Complexity : O(N) biggest size of input will be all nums
 #// Did this code successfully run on Leetcode : yes
 #// Any problem you faced while coding this :
 #
 # internalizing backtracking problems
 #
 #// Your code here along with comments explaining your approach
-
+#
+# recurse over the nums input
+# immediately push each input
+# also push any path when you reach nums.length
+# backtrack by visiting recursively path less the current input
+#
+# return output
 
 #/**
 # * @param {number[]} nums
