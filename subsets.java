@@ -1,6 +1,6 @@
     /*  Explanation
     # Leetcode problem link : https://leetcode.com/problems/subsets/
-    Time Complexity for operators : o(n^n) .. n is the length of the integer array
+    Time Complexity for operators : o(2^n) .. n is the length of the integer array
     Extra Space Complexity for operators : o(n) for (List<String> path) without recursive stack
     Did this code successfully run on Leetcode : NA
     Any problem you faced while coding this : No
