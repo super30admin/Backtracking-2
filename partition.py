@@ -1,3 +1,6 @@
+Time Complexity: O(N X 2 ^ N)
+Space Complexity: O(N)    
+    
 class Solution(object):
     def partition(self, s):
         ans = []
