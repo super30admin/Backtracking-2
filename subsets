@@ -1,0 +1,25 @@
+// time complexity: N*2^N -> 2^N combinations and N : time to copy the list into output at every intermediate list of recursive calls
+// space complexity: 2^N lists and max size of each list = N: (N : stack space) => N + N*2^N
+// we adda results of every recursive call in our output
+class Solution {
+    List<List<Integer>> output;
+    public List<List<Integer>> subsets(int[] nums) {
+        output = new ArrayList<>();
+        helper(0, new ArrayList<>(), nums);
+        return output;
+    }
+    
+    public void helper(int start, List<Integer> temp, int[] nums){
+        
+        output.add(new ArrayList<>(temp));
+        
+            // make a choice
+        for(int i = start; i < nums.length; i++){
+            // follow the path
+            temp.add(nums[i]);
+            helper(i+1, temp, nums);
+            // unfollow the path
+            temp.remove(temp.size()-1);
+        }
+    }
+}
