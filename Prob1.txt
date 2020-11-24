@@ -1,0 +1,27 @@
+# Time Complexity: O(2^n)
+# Space Complexity: O(n)
+# Did this code successfully run on LeetCode: Yes
+
+# Three line Explanation:
+# 1. Develop a recursive algorithm of choosing and notchoosing
+# 2. If added to the list, remove after recursive call (backtracking)
+# 3. Keep adding to the main result when leaf is reached, then return the main list
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        self.nums = nums
+        self.result = []
+        self.helper([], 0)
+        return self.result
+    
+    def helper(self, temp, index):
+        # base
+        if index == len(self.nums):
+            self.result.append(temp[:])
+            return
+        # logic
+        self.helper(temp, index+1)
+        temp.append(self.nums[index])
+        self.helper(temp, index+1)
+        temp.pop()
+        return
