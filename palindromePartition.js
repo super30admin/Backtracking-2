@@ -7,11 +7,13 @@
 var partition = function(s) {
     let res = [];
     if(s == null) return res
-    helper(s, 0)
+    helper(s,0)
     return res;
     function helper(s, index, temp = []){
         //base
- 
+        if(index == s.length){
+            res.push(temp)
+        }
 
         //logic
         for(let i = index; i < s.length; i++){
