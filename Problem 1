@@ -1,0 +1,22 @@
+//This solution was not accepted in LeetCode, I am getting time limit exceeded error.
+//Kindly let me know.
+
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+        backtrack(result,new ArrayList<Integer>(),nums,0);
+        return result;
+    }
+    
+    public void backtrack(List<List<Integer>> result, List<Integer> cur, int[] nums, int start)
+    {
+        result.add(new ArrayList<Integer>(cur));
+        for(int i = start; i < nums.length; i++)//build a node of the decision tree
+        {
+    			cur.add(nums[i]);
+    			backtrack(result, cur, nums, i); 
+    			cur.remove(cur.size() - 1);               
+    	}//for      
+    }
+}
