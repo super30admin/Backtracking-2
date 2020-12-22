@@ -1,0 +1,21 @@
+class Solution_subsets:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+    #O(n) spc and 2^n tc
+        if nums==None or len(nums)==0:
+            return []
+        self.result=[]
+        self.helper(nums, 0, [])
+        return self.result
+
+    def helper(self, nums, index, cur_val):
+        # //base
+        self.result.append(list(cur_val))
+        
+        # code
+        
+        # choose
+        for i in range(index, len(nums)):
+            cur_val.append(nums[i])
+            self.helper(nums, i+1, cur_val)
+            cur_val.pop()
+        
