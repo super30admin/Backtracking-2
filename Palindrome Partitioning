@@ -1,0 +1,52 @@
+//TC: O(Exponential)
+//SC: O(N) --> Recursive Stack + List
+
+//Approach: Idea is to use backtracking and also use additional check Palindrome function
+
+class Solution {
+        List<List<String>> result;
+    public List<List<String>> partition(String s) {
+        result = new ArrayList<>();
+        
+        
+        if(s==null || s.length()==0){
+            return result;
+        }
+        
+        helper(s, 0 , new ArrayList<>());
+        return result;
+    }
+    
+    
+    private void helper(String s, int index,List<String> lst){
+        //base
+        if(index==s.length()){
+            result.add(new ArrayList<>(lst));
+            return;
+        }
+
+        for(int i = index ; i < s.length() ; i++){
+            if(checkPalindrome(s, index , i)){
+                //Action
+                lst.add(s.substring(index, i + 1));
+                //recurse
+                helper(s, i + 1 , lst);
+                //backtrack
+                lst.remove(lst.size()-1);
+            }
+        }
+
+    }
+    
+    private boolean checkPalindrome(String temp, int start, int end){
+        while(start<end){
+            if(temp.charAt(start)!=temp.charAt(end)){
+                return false;
+            }
+                start++;
+                end--;
+            
+        }
+        return true;
+    }
+}
