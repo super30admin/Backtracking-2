@@ -1,0 +1,61 @@
+//Time Complexity: O(Exponential) - Verify which factors contribute to TC?
+//Space Complexity: O(N)
+
+//Approach: Idea is to add elements to result List and perform backtrack on all other elements.
+//HINT: We also need [] as our ans. which will the first recursive call to the func.
+
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        if(nums==null || nums.length==0){
+            return result;
+        }
+        helper(nums, 0 ,  new ArrayList<>());
+        return result;
+    }
+    
+    private void helper(int[] nums, int index , List<Integer> lst){
+        //base--> blindly add
+        result.add(new ArrayList<>(lst));
+        // logic
+        for(int i = index ; i < nums.length ; i++){ 
+            lst.add(nums[i]);
+            // System.out.println(lst);
+            helper(nums, i + 1,lst);
+            lst.remove(lst.size() - 1);
+        }
+    }
+}
+
+
+/*  RECURSION */
+//TC: O(exponential)
+//SC: O(exponential)
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        if(nums==null || nums.length==0){
+            return result;
+        }
+        helper(nums, 0 ,  new ArrayList<>());
+        return result;
+    }
+    
+    private void helper(int[] nums, int index , List<Integer> lst){
+        //base
+        if(index >= nums.length){
+            result.add(lst);
+            return;
+        }
+        //skip
+        // System.out.println(" i " + index + " skip " + lst);
+        helper(nums, index + 1 , new ArrayList<>(lst));
+        
+        //take
+        lst.add(nums[index]);
+        // System.out.println(" i " + index + " take " + lst);
+        helper(nums, index + 1 , new ArrayList<>(lst));
+    }
+}
