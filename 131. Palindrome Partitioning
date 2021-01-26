@@ -1,0 +1,41 @@
+class Solution:
+    def checkpalindrome(self, st):
+        low, high = 0, len(st) - 1
+        
+        while(low < high):
+            if(st[low] != st[high]):
+                return False;
+            low += 1;
+            high -= 1;
+        #print(True)
+        return True;
+    def helper(self, idx, s, sublist, result):
+        
+        # add the palindrome partition into the result
+        if(idx == len(s)):
+            result.append(list(sublist));
+            return
+        
+        # find all the substrings from the index - idx 
+        
+        for i in range(idx, len(s)):
+            currstr = s[idx:i+1];
+            # check whether the curr substring is palindrome or not
+            if(self.checkpalindrome(currstr)):
+                sublist.append(currstr); # append the current palindromic string into sublist
+                self.helper(i + 1, s, sublist, result);
+                sublist.pop(); # pop the string from stack, backtracking step
+    
+    def partition(self, s: str) -> List[List[str]]:
+        sublist, result = [], []
+        
+        self.helper(0, s, sublist, result)
+        return result;
+    
+    '''
+    n = len(s)
+    time complexity = O(n*2^n)
+    space complexity = O(n)
+    
+    '''
+        
