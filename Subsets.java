@@ -17,6 +17,6 @@ class Solution {
     }
 }
 
-//Time complexity : O(2^N)
-//Space complexity : O(2^N)
+//Time complexity : O(N*2^N)
+//Space complexity : O(N*2^N)
 
