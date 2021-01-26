@@ -1,0 +1,29 @@
+class Solution:
+    
+    # function to find the subsets
+    def fun(self,idx, nums,sublist, result):
+        
+        # add the subset to the list
+        result.append(list(sublist));
+        
+        
+        for i in range(idx, len(nums)):
+            sublist.append(nums[i]); # push nums[i] into the stack
+            self.fun(i + 1, nums, sublist, result);
+            sublist.pop(); # pop the nums[i] from the step - backtracking step
+        
+            
+        
+    
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        sublist, result = [], []
+        self.fun(0, nums, sublist, result);
+        return result;
+    
+    """
+    n = len(nums)
+    time complexity = O(n*2^n)
+    space complexity = O(n)
+    """
+        
+        
