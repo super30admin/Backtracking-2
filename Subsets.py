@@ -3,7 +3,7 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         #Approach: Recursion with backtracking
         #Time Complexity: O(n * 2^n)
-        #Space Complexity: O(n * 2^n)   // but half of when not using backtracking
+        #Space Complexity: O(n)
         #where, n is the length of nums
         
         self.result = []
@@ -30,7 +30,7 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         #Approach: Recursion with backtracking
         #Time Complexity: O(n * 2^n)
-        #Space Complexity: O(n * 2^n)   // but half of when not using backtracking
+        #Space Complexity: O(n)
         #where, n is the length of nums
         
         self.result = []
