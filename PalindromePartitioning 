@@ -1,0 +1,44 @@
+//Time com - o(N*2^N)
+//Space com - o(N*2^N)
+//Lettcode - Yes
+class Solution {
+    List<List<String>> result;
+    public List<List<String>> partition(String s) {
+        result = new ArrayList<>();
+        if(s.length() == 0) return result;
+        helper(s,0,new ArrayList<>());
+        return result;
+    }
+    private void helper(String s,int index,List<String> path) {
+        //base
+        //if index reach to the end means those subsets are Palindrome add path to result
+        if(index == s.length()) {
+            result.add(new ArrayList<>(path));
+            return;
+        }
+        //logic
+        for(int i = index;i<s.length();i++){
+        	//if new substring is palindrome check the remaining substrings
+            if(isPalindrome(s,index,i)) {
+                path.add(s.substring(index,i+1));
+                helper(s,i+1,path);
+                path.remove(path.size()-1);
+            }
+        }
+    }
+    
+    //check palindrome or not(mirror image)
+    private boolean isPalindrome(String s,int i,int j) {
+    	//start is less than end pointer
+        while(i<j) {
+        	// both should be equal
+            if(s.charAt(i) == s.charAt(j)) {
+                i++; j--;
+            } else {
+            	// if not return false
+                return false;
+            }
+        }
+        return true;
+    }
+}
