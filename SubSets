@@ -1,0 +1,29 @@
+//Time com - o(N*2^N)
+//Space com - o(N*2^N)
+//Lettcode - Yes
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        if(nums == null || nums.length == 0)
+            return result;
+        helper(nums,0,new ArrayList<>());
+        return result;
+    }
+    
+    private void helper(int[] nums, int index,List<Integer> path) {
+        
+        //base
+        result.add(new ArrayList<>(path));
+        System.out.println(result);
+        //logic
+        for(int i = index;i <nums.length;i++) {
+        	//add subset to  path
+            path.add(nums[i]);
+            //call recursion on next index
+            helper(nums,i+1,path);
+           //backtrack -remove last element
+            path.remove(path.size()-1);
+        }
+    }
+}
