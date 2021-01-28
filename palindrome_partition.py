@@ -1,4 +1,4 @@
-# Time Complexity : O(N * 2^N) O(N) - checking palindrome ability and O(2^N) since we have a two choice in recursive tree
+# Time Complexity : O(N * N * 2^N) O(N) - checking palindrome ability and O(2^N) since we have a two choice in recursive tree and O(N) for substring
 # Space Complexity : O(N) Take space in backtracking
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
