@@ -4,14 +4,14 @@ class Solution:
     DescriptionL Palindrome Partitioning
     from given string s find substrings which are palindrome
     
-    Time Complexicity: O()
-    Space Complexicity: O()
+    Time Complexicity: O(n*L^n), where L -> length of the string
+    Space Complexicity: O(n)
     
-    Worked in Leetcode: Not yet (still trying)
+    works in leetcode: Yes
     
-    Approach: Using backtracking
-    
-    
+    Approach: Using backtracking (similar to problem 1)
+    - made use of for loop instead
+    - start the backtrack from index to end of the string in for loop
     """
     
     def partition(self, s: str) -> List[List[str]]:
@@ -32,7 +32,6 @@ class Solution:
         # Logic
         for i in range(index, len(string)):
             if self.isPalindrome(string, index, i):
-                print(string)
                 # Action
                 path.append(string[index:(i + 1)])
                 # Recurse
