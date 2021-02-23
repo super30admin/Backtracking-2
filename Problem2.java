@@ -1,43 +1,44 @@
-//Time complexity:O(n^n)
+//Time complexity:O(2^n)
 //Space complexity:O(length of string)
-//Ran on leetcode:No
-//Solution with comments: My output does not have unique subarray.
+//Ran on leetcode:yes
+//Solution with comments: 
 class Solution {
-    List<List<String>> output= new ArrayList<>();
+    
     public List<List<String>> partition(String s) {
-       
-        int n=s.length();     
-        backtrack(s.substring(0,n),new ArrayList<>());
-        return output;
+            backtrack(s,0,new ArrayList<>());
+            return output;
     }
     
-    public void backtrack(String sub, List<String> list){
-        int n= sub.length();
-        if(sub.length()<1)
+    List<List<String>> output= new ArrayList<>();
+    
+    public void backtrack(String s, int index, List<String> path){
+        if(index >=s.length()){
+            output.add(new ArrayList<>(path));//we add to ouput only when all substring till length are checked
             return;
+        }
         
-        else if(sub.length()==1){
-            list.add(sub);
-            output.add(list);
-            return;
-        }
-        else{
-            if(sub.charAt(0)==sub.charAt(n-1))
-            {
-                list.add(sub);
-                output.add(new ArrayList<>(list));
+        for(int i=index;i<s.length();i++){
+            String curr= s.substring(index,i+1);
+            if(isPalindrome(curr)){
+                path.add(curr);
+                backtrack(s,i+1,path);
+                path.remove(path.size()-1);//once backtrack is done for particular path remove the last added element
             }
-            else{
-                for(int i=0;i<n-1;i++){
-                    
-                    list.add(sub.substring(0,i+1));            
-                    backtrack(sub.substring(i+1,n),list);
-                    output.add(new ArrayList<>(list));
-                    list= new ArrayList<>();
-                }
-            }
-               
         }
+    }
+    
+    public boolean isPalindrome(String s){//check a string is palindrome
+        int low=0;
+        int high=s.length()-1;
+        while(low<high){
+            if(s.charAt(low)!=s.charAt(high)){
+               return false; 
+            }
+
+            low++;
+            high--;
+            }
+        return true;
     }
     
 }
