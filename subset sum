@@ -1,0 +1,64 @@
+// Time Complexity :(2^n) exponential 
+// Space Complexity : recursive stack O(n) height of the stack + one list path 
+// Did this code successfully run on Leetcode : yes 
+// Any problem you faced while coding this :
+where to add the path
+
+// Your code here along with comments explaining your approach
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        if(nums == null || nums.length==0)
+            return result;
+        
+        helper(nums, 0, new ArrayList<>());
+        return result;
+    }
+    
+    private void helper(int[] nums, int index, List<Integer> path)
+    {
+        // System.out.println("index = "+ index+" nums.length = "+nums.length+" path = "+path);
+        //base
+        if(index == nums.length || path == null)
+        {
+           result.add(new ArrayList<>(path));
+            return;
+        }
+            
+        helper(nums, index+1, path);
+        path.add(nums[index]);
+        helper(nums, index+1, path);
+        path.remove(path.size()-1);
+      
+    }
+}
+
+iterative approach
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        if(nums == null || nums.length==0)
+            return result;
+        
+        helper(nums, 0, new ArrayList<>());
+        return result;
+    }
+    
+    private void helper(int[] nums, int index, List<Integer> path)
+    {
+        // System.out.println("index = "+ index+" nums.length = "+nums.length+" path = "+path);
+        //base
+       
+           result.add(new ArrayList<>(path));
+          for(int i = index; i<nums.length; i++)
+          {
+               
+                path.add(nums[i]);
+                helper(nums, i+1, path);
+                path.remove(path.size()-1);
+          }
+      
+    }
+}
