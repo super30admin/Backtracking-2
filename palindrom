@@ -1,4 +1,4 @@
-// Time Complexity : O(2^n) exponential
+// Time Complexity : substring -O(n) + isPalindrome O(n) x[O(2^n) exponential ] => O(n.2^n)
 // Space Complexity : O(n) - recursive stack + path O(n) => O(n)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this :
