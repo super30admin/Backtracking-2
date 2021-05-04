@@ -4,8 +4,8 @@ Thought Process: Had to see professor's video to remember the approach again. Ne
 
 Base -> Iterate -> Action -> Recurse -> Backtrack
 
-Time Complexity - O(2 * pow(N)) -> In normal recursion solution (we copy the arraylist always) it was O(N * 2 * pow(N))
-Space Complexity - O(N) -> Recursive height + 1 arraylist 
+Time Complexity - O(N * 2 * pow(N)) -> Recursive Approach in 2 Pow(N) , Palindrome Check and Substring 2N
+Space Complexity - O(N) -> Recursive height + 1 arraylist (path) + Substring
 
 */
 
