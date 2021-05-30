@@ -1,5 +1,7 @@
 import java.util.*;
 
+//TC: N*2(N) - For Palindrom it will be N and for backtrack it will be N(2)
+//SC:O(N) - recursive stack space
 public class Subsets {
 
     List<List<Integer>> result;
