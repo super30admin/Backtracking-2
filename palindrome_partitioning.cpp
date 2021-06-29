@@ -1,5 +1,5 @@
-// Time Complexity : O(n)
-// Space Complexity :  Not sure
+// Time Complexity : O(2^n)
+// Space Complexity :  O(2^n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this
 
