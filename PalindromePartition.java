@@ -10,90 +10,90 @@ Problems : need to handle all cases
  */
 public class PalindromePartition {
 
+
     public List<List<String>> list = new ArrayList();
 
-    public List<List<String>> partition(String s) {
-        if (s.length() == 1)
-            list.add(new ArrayList(Arrays.asList(Character.toString(s.charAt(0)))));
-        List<Integer> temp = new ArrayList(Arrays.asList(Character.toString(s.charAt(0))));
-        helper(s, 1, new ArrayList(temp), false);
-        helper(s, 1, new ArrayList(temp), true);
+    /**
+     * In this approach we iterate over the string considering only a part of the string and at each stage we add the substring in the resultant path
+     * if and only if it is a palindrome. If we reach the end, where the string is empty then tha means
+     * all the substring added so far are palindromes.
+     * Hence, we simply add this in the final list.
+     * <p>
+     * Also, we remove the last substring added after the recursion call to perform backtracking.
+     *
+     * @param s
+     * @return
+     */
+    public List<List<String>> partition_with_backtracking(String s) {
 
+        helper_with_backtracking(s, new ArrayList<>());
         return list;
     }
 
-    public void helper(String s, int index, List<String> path, boolean flag) {
-        System.out.println(path + " " + index);
-        if (index == s.length()) {
+    public void helper_with_backtracking(String s, List<String> path) {
 
-            return;
-        }
+        if (s.length() == 0)
+            list.add(new ArrayList<>(path));
+
+        for (int i = 0; i < s.length(); i++) {
 
 
-        if (!flag) {
-
-            String temp1 = path.get(path.size() - 1);
-            temp1 += s.charAt(index);
-            path.remove(path.size() - 1);
-            if (temp1.length() != 0)
-                path.add(temp1);
-            if (index == s.length() - 1) {
-                if (isPalindrome(path))
-                    list.add(new ArrayList(path));
-
-            } else {
-                helper(s, index + 1, path, false);
-                String temp2 = path.get(path.size() - 1);
-                temp2 = temp2.substring(0, temp2.length() - 1);
+            if (isPalindrome(s, 0, i)) {
+                path.add(s.substring(0, i + 1));
+                helper_with_backtracking(s.substring(i + 1), path);
                 path.remove(path.size() - 1);
-                if (temp2.length() != 0)
-                    path.add(temp2);
-
-                if (index == s.length() - 1) {
-                    if (isPalindrome(path))
-                        list.add(new ArrayList(path));
-
-                } else
-                    helper(s, index + 1, path, true);
             }
-
-        } else {
-
-            path.add(Character.toString(s.charAt(index)));
-
-            if (index == s.length() - 1) {
-                if (isPalindrome(path))
-                    list.add(new ArrayList(path));
-
-            } else {
-                helper(s, index + 1, path, false);
-
-                path.remove(path.size() - 1);
-                path.add(Character.toString(s.charAt(index)));
-                helper(s, index + 1, path, true);
-            }
-
-
         }
-
 
     }
 
-    public boolean isPalindrome(List<String> list) {
+    public boolean isPalindrome(String str, int start, int end) {
 
-        for (String str : list) {
 
-            int start = 0;
-            int end = str.length() - 1;
+        if (start == end)
+            return true;
 
-            while (start <= end) {
-                if (str.charAt(start) != str.charAt(end))
-                    return false;
-                start++;
-                end--;
-            }
-
+        while (start <= end) {
+            if (str.charAt(start) != str.charAt(end))
+                return false;
+            start++;
+            end--;
         }
+
         return true;
     }
+
+
+    /**
+     * The approach taken here is the same as before. Just that instead of removing the last added substirng and backtracking,
+     * we create a deep copy of the list everytime and use that.
+     */
+
+    public List<List<String>> list_with_recursion = new ArrayList();
+
+    public List<List<String>> partition_with_recursion(String s) {
+
+        helper_with_recursion(s, new ArrayList<>());
+        return list_with_recursion;
+    }
+
+    public void helper_with_recursion(String s, List<String> path) {
+
+        if (s.length() == 0)
+            list_with_recursion.add(path);
+
+        for (int i = 0; i < s.length(); i++) {
+
+
+            if (isPalindrome(s, 0, i)) {
+                List<String> copy = new ArrayList<>(path);
+                copy.add(s.substring(0, i + 1));
+                helper_with_recursion(s.substring(i + 1), copy);
+
+            }
+        }
+
+    }
+
+
 }
