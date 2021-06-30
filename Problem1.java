@@ -2,6 +2,52 @@
 // Time - O(N * 2^N)
 // Space - O(N)
 
+// Jaspreet's solution
+
+class Solution {
+
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+
+        result = new ArrayList<>();
+
+        backTrack(nums, 0, new ArrayList<>());
+        return result;
+
+
+    }
+
+    private void backTrack(int[] nums, int index, List<Integer> path) {
+
+        // base case
+
+
+        // logic
+        // at every end of the node will be adding subset to the main result
+        result.add(new ArrayList<>(path));
+
+        for(int i = index; i < nums.length; i++) {
+
+            // action
+
+            path.add(nums[i]);
+
+            //recurse
+
+            backTrack(nums,i+1,path);
+
+            //backtrack
+
+            path.remove(path.size() - 1);
+
+
+        }
+
+
+    }
+}
+
+
 
 
 class Solution {
