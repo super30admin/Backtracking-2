@@ -13,14 +13,15 @@ public:
             res.push_back(list);
             return;
         }
+        //action
         list.push_back(nums[start]);
-        helper(nums, res, list, start + 1);
+        helper(nums, res, list, start + 1);//recurse
+        //backtrack
         list.pop_back();
-        helper(nums, res, list, start + 1);
+        helper(nums, res, list, start + 1);//recurse
     }
 };
 
-//iterative in O(n^2)
 
 /*  vector<vector<int>> subsets(vector<int>& nums) {
      
@@ -37,4 +38,3 @@ public:
         }
         return results;
   }*/
-
