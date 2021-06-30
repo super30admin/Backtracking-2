@@ -69,4 +69,34 @@ public class Subsets {
 
         }
     }
+
+    /*
+    TC : It will be exponential as we are iterating over the result list again and again
+    SC : Similar to above case
+    LC :
+     */
+
+    /**
+     * We iterate over the array and add each element to the already existing sub lists and create new lists
+     *
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> subsets_without_recursion(int[] nums) {
+        List<List<Integer>> result = new ArrayList();
+
+        result.add(new ArrayList());
+
+        for (int num : nums) {
+            int size = result.size();
+            for (int i = 0; i < size; i++) {
+
+                List<Integer> copy = new ArrayList<>(result.get(i));
+                copy.add(num);
+                result.add(copy);
+            }
+        }
+
+        return result;
+    }
 }
