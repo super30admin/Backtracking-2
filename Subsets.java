@@ -1,5 +1,5 @@
 // Time Complexity : O(N* 2 POW N) // at every node we can take 2 decisions.
-// Space Complexity :O(1)
+// Space Complexity :O(N)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this :no
 
