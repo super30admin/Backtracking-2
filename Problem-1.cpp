@@ -1,6 +1,9 @@
 class Solution {
     //sir taught this one in class
     //exponential tc
+    
+    //O(n*2^n) is TC (edit)
+    //O(n) is auxillary stack space
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>> res;
