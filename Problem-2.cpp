@@ -1,7 +1,9 @@
 class Solution 
     //samething as previous, just with a ispalindrome check
     //nice
-public:
+    //O(n*4^n) TC
+    //O(n) is SC, clarified with TA
+ public:
     vector<vector<string>> partition(string s) {
         vector<vector<string> > ret;
         if(s.empty()) return ret;
