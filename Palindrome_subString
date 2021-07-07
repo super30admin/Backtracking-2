@@ -1,0 +1,58 @@
+// Time Complexity :O(n2^n) --> To get the substring using backtracking we take 2^n steps and To check if the string is palandrome we go over 'n' steps
+// Space Complexity : O(N) 
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+
+
+// Why BackTracking?
+// To check if there is any substring that are palindrome, we need to explore ALL the substrings available.
+// To explore ALL the path - keep adding the substring until its not palindrome.
+// Remove the last string & move the start index and check if the next level of substring is palindrome.
+
+class Solution {
+    List<List<String>> result;
+    public List<List<String>> partition(String s) {
+        result = new ArrayList<>();
+        if(s == null || s.length() ==0)
+            return result;
+        
+        partition_backtrack(s, 0, new ArrayList<>());
+        return result;
+    }
+    
+    private void partition_backtrack(String s, int start_index, List<String> currPath){
+        //base
+        if(start_index == s.length()){
+            result.add(new ArrayList<>(currPath));
+            return;
+        }
+        //Logic
+        for(int i=start_index; i<s.length();i++){   // Starts at 0th index and explore all the substrings from 0 till s.length
+            if(isPalindrome(s, start_index, i)){   // Proceed with processing only when the current substring is palindrome.
+                //Action
+                currPath.add(s.substring(start_index,i+1)); // Add current substring to the tempList or current path list.
+                System.out.println(currPath);
+                //Recurse
+                partition_backtrack(s,i+1, currPath); // invoke recursive function from next char
+                System.out.println("After Back Tracking method" + currPath);
+                //Backtrack
+                currPath.remove(currPath.size()-1); // remove the last char in the currnt temp list.
+            }
+        }
+    }
+    
+    private boolean isPalindrome(String s, int left, int right){
+        while(left < right){
+            if(s.charAt(left) != s.charAt(right))
+                return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+    
+    
+}
