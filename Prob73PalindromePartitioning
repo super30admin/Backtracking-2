@@ -1,0 +1,59 @@
+// Time Complexity : exponential 
+// Space Complexity : 2^length of the string
+// Did this code successfully run on Leetcode :
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach
+
+/**
+ * @param {string} s
+ * @return {string[][]}
+ */
+var partition = function(s) {
+    let res=[];
+    
+    helper(s,0,[]);
+    
+    return res;
+    
+    
+    function helper(s,index,path){
+        
+        //base
+        if(index===s.length){
+            res.push([].concat(path));
+            return
+        }
+        
+        //logic
+        for(let i=index;i<s.length;i++){
+            if(isPalindrome(s,index,i)){
+                //action
+                path.push(s.substring(index,i+1))
+                
+                //recurse
+                helper(s, i+1, path)
+                
+                //backtrack
+                path.pop();
+            }
+            
+        }
+        
+        
+        
+    }
+    
+    function isPalindrome(s,l,r){
+        while(l<r){
+            if(s.charAt(l)!==s.charAt(r)) return false;
+            l++;
+            r--
+        }
+        return true;
+    }
+    
+    
+    
+};
