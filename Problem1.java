@@ -1,11 +1,11 @@
 // Time Complexity :exponential
-// Space Complexity :(O(1)) for backtracking
+// Space Complexity :O(1) for backtracking
 // Did this code successfully run on Leetcode :yes
 // Any problem you faced while coding this :no
 
 
 // Your code here along with comments explaining your approach
-//recursion solution
+//for loop based recursion solution with recursion
 class Solution {
     List<List<Integer>> result;
     public List<List<Integer>> subsets(int[] nums) {
