@@ -1,0 +1,43 @@
+// Time Complexity : Exponential
+// Space Complexity : 
+// Did this code successfully run on Leetcode : No
+// Any problem you faced while coding this : 
+
+
+// Your code here along with comments explaining your approach
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+    let res=[];
+    if(nums.length===0 || nums ===null) return;
+   for(let i=0;i<nums.length+1;i++){
+         helper(nums,[],0)  
+   }
+
+    return res;
+    
+
+    function helper(nums,curr,index){
+        //base
+        if(curr.length===nums.length){
+            res.push([].concat(curr));
+            return
+            
+        }
+        
+        //logic
+        for(let i=index;i<nums.length;i++){
+            //action
+            curr.push(nums[i])
+            
+            //recurse
+            helper(nums,curr,i+1)
+            
+            //bactrack
+            curr.pop()
+        }      }
+    
+};
