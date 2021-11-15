@@ -1,0 +1,37 @@
+class Solution {
+    
+    List<List<Integer>> result;
+    
+    public List<List<Integer>> subsets(int[] nums) {
+        
+        result = new ArrayList<>();
+      
+        
+        helper(new ArrayList<>(), 0, nums);
+        
+        return result;
+        
+    }
+    
+    private void helper(List<Integer> path, int index, int[] nums)
+    {
+        
+        result.add(new ArrayList<>(path));
+        
+        if(index==nums.length)
+        {
+            return;
+        }
+               
+        
+        for (int i=index; i<nums.length; i++)
+        {
+            path.add(nums[i]);
+           // result.add(new ArrayList<>());
+            
+            helper(path, i+1, nums);
+            path.remove(path.size()-1);
+            
+        }
+    }
+}
