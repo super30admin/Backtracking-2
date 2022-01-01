@@ -1,3 +1,11 @@
+# Time Complexity: O(n * 2^n), O(n) for checking palindrome and O(2^n) for all palindromes
+# Space Complexity:  O(N), where N is the length of the string s.
+#  This space will be used to store the recursion stack. 
+#  For s = aaba, the maximum depth of the recursive call stack is 4 which is equivalent to N.
+# Did it run successfully on Leetcode: Yes
+# Any issues while coding: Took some time to code the substring approach
+
+
 class Solution:
 
     # backtracking with pivot
