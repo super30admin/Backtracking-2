@@ -1,5 +1,9 @@
 import java.util.*;
-
+// Time Complexity : n*O(2^n) at every recursive step we have two decisions , and recursion continues till n , n being the length of the array
+//At every recusrive step we copy n elements to craete a currpartition also
+// Space Complexity :O(n) maximum calls in the recursive stack
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :No 
 public class Solution2 {
     
     //Backtracking solution- Recursive Iterative Approach
