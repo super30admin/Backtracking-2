@@ -1,3 +1,7 @@
+//Time Complexity: O(exponential)
+//Space Complexity: O(n)
+
+
 class Solution {
     List<List<String>> result;
     public List<List<String>> partition(String s) {
