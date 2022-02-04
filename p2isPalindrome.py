@@ -26,5 +26,5 @@ class Solution(object):
             l += 1; r -= 1
         return True
 		
-	def isPalindrome1(self, s):
-		return s == s[::-1]
+    def isPalindrome1(self, s):
+		    return s == s[::-1]
