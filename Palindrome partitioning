@@ -1,0 +1,52 @@
+//TC = O(2^n * n)
+//SC = O(n)
+class Solution {
+    
+    List<List<String>> result;
+    public List<List<String>> partition(String s) {
+        result = new ArrayList<>();
+        
+        partition(s, 0, new ArrayList<>());
+        
+        return result;
+        
+    }
+    
+    private void partition(String s, int index, List<String> list){
+        
+        //base
+        if(index == s.length()){
+            result.add(new ArrayList<>(list));
+        }
+        
+        //for loop method
+        for(int i = index; i < s.length(); i++){
+            
+            String substr = s.substring(index, i+1);  //partitioning from index to i+1 in string
+            
+            if(IsPalindrome(substr)){
+                list.add(substr);        //if substr is palindrome then add to list
+                partition(s, i+1, list);  //now go to index+1
+                list.remove(list.size()-1);  //for backtracking
+            }
+        }
+        
+        
+    }
+    
+    private boolean IsPalindrome(String s){
+        
+        int l=0, r= s.length()-1;
+        
+        while(l < r){
+            
+            if(s.charAt(l) != s.charAt(r)){
+                return false;
+            }
+            l++;
+            r--;
+         }
+        
+        return true;
+    }
+}
