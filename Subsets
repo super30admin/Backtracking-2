@@ -1,0 +1,29 @@
+//TC = 2^n * n -> 2 options choose & not choose * iterating the list
+class Solution {
+    
+    private List<List<Integer>> result;
+    
+    public List<List<Integer>> subsets(int[] nums) {
+        
+        result = new ArrayList<>();
+        subsets(nums, 0, new ArrayList<>());
+        return result;
+        
+    }
+    
+    private void subsets(int[] nums, int index, List<Integer> subset){
+        //base
+        if(index == nums.length){
+            result.add(new ArrayList<>(subset));
+            return;
+        }
+        
+        //choose
+        subset.add(nums[index]);  //adding value to our list
+        subsets(nums, index+1, subset);  //then moving index+1 in next method call
+        subset.remove(subset.size()-1);   //empty the subset list
+        
+        //not choose
+        subsets(nums, index+1, subset);
+    }
+}
