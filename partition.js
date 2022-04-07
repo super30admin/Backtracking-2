@@ -1,4 +1,4 @@
-// Time Complexity : O(2^n) where n is length of nums
+// Time Complexity : O(n*2^n) where n is length of s
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
@@ -9,7 +9,7 @@
  */
 
 let result;
-//
+
 // Logic to check if string is palindrom with two pointer solution
 var isPalindrome = function(s) {
     let start = 0;
@@ -32,8 +32,8 @@ var helper = function(s, index, path) {
     
     //logic
     for(let i = index; i < s.length; i++) {
-        let curr = s.substring(index,i+1);
-        if(isPalindrome(curr)) {
+        let curr = s.substring(index,i+1); //O(n)
+        if(isPalindrome(curr)) { //O(n)
             //action
             path.push(curr);
             //recursion
