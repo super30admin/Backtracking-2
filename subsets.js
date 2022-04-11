@@ -59,3 +59,23 @@ var subsets = function(nums) {
     return result;
 };
 */
+
+
+// Solution without recursion
+/*
+var subsets = function(nums) {
+    let result = [];
+    if(nums === null) return result;
+    result.push([]);
+    //nums=[1,2,3]
+    for(let i = 0; i < nums.length; i++) {
+        let size = result.length;
+        for(let j = 0; j < size; j++) {
+            let newArray = [...result[j]];
+            newArray.push(nums[i]);
+            result.push(newArray);
+        } 
+    }
+    return result;
+};
+*/
