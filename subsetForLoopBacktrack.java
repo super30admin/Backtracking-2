@@ -1,3 +1,5 @@
+//tc : exponentital --> 2 ^ n
+// sc : recursive stack spaace ---> o(n)
 class Solution {
     List<List<Integer>> result;
     public List<List<Integer>> subsets(int[] nums) {
@@ -16,11 +18,14 @@ class Solution {
         // }
        
         // the above base case isnt nevcessary cuz the below for loop wil ltake care of such siutation 
-        result.add(path); 
+        result.add(new ArrayList<>(path)); 
         for(int i = index; i < nums.length; i++) {
-            List<Integer> list = new ArrayList<>(path);
-            list.add(nums[i]);
-            helper(nums, i + 1, list);
+            //action
+            path.add(nums[i]);
+            //recurse
+            helper(nums, i + 1, path);
+            //backtrack
+            path.remove(path.size() - 1);
         }
     }
 }
