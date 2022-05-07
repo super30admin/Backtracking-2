@@ -1,4 +1,4 @@
-//tc N ^ 2
+//tc N * (2 ^ N)
 //SC N
 
 class Solution {
@@ -16,9 +16,9 @@ class Solution {
         // so forever j will be less than result.size
         // it is hence crucial to use a varfiable to save the state and progress with the logic
         result.add(new ArrayList<>());
-        for(int i = 0; i < nums.length; i++) {
+        for(int i = 0; i < nums.length; i++) { // o(n)
             int size = result.size();
-            for(int j = 0; j < size; j++) {
+            for(int j = 0; j < size; j++) { // o(2 ^ n)
                 List<Integer> list = new ArrayList<>(result.get(j));
                 list.add(nums[i]);
                 result.add(list);
