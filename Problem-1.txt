@@ -1,0 +1,39 @@
+//tc - O(2^n)
+//sc- O(n)
+//Backtracking
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        //null case
+        
+        helper(nums, 0 , new ArrayList<>());
+        return result;       
+        
+        
+    }
+    
+    private void helper(int[] nums , int index , List<Integer>path)
+    {
+        //base
+        if(index == nums.length)
+        {
+            result.add(new ArrayList<>(path));
+            return;
+        }
+        //logic
+        
+        //case 0 
+        
+      
+        helper(nums, index+1,path);
+        
+        path.add(nums[index]);
+        //case1
+        helper(nums,index+1 ,path);
+        
+        path.remove(path.size()-1);
+            
+            
+    }
+}
