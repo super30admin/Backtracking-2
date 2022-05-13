@@ -20,3 +20,5 @@ class subset1{
         return result;
     }
 }
+//time complexity O(2^n)
+//space complexity O(n) where n is length of array
