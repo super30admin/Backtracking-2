@@ -1,4 +1,4 @@
-// O(2^n) time ||   O(2^n) space 
+// O(2^n) time ||   O(n) space 
 
 class Solution {
   
