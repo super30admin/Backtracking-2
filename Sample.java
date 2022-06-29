@@ -93,7 +93,7 @@ class Solution {
     }
     
 }
-//****PALINDROME PARTITION****
+//****PALINDROME PARTITION-- FOR LOOP BASED RECURSION****
 //Time complexity:n*2 res to n
 //Space complexity: o(n);
 
