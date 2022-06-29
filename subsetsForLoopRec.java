@@ -8,33 +8,30 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class subsetsRec {
+public class subsetsForLoopRec {
     static List<List<Integer>> res;
-    public static List<List<Integer>> subsets(int[] nums) {
-        res = new ArrayList<List<Integer>>();
 
+    public static List<List<Integer>> subsets(int[] nums) {
+        res = new ArrayList<>();
         // Null case
         if (nums == null)
             return res;
-
         // recurssion
         helper(nums, 0, new ArrayList<>());
         return res;
     }
 
     private static void helper(int[] nums, int index, List<Integer> path) {
-        // Base condition
-        if (index == nums.length) {
-            res.add(path);
-            return;
-        }
 
-        // Logic
-        // Don't choose
-        helper(nums, index + 1, new ArrayList<>(path));
-        path.add(nums[index]);
-        // choose
-        helper(nums, index + 1, new ArrayList<>(path));
+        // Action
+        res.add(path);
+
+        // Recurse
+        for (int i = index; i < nums.length; i++) {
+            List<Integer> temp = new ArrayList<>(path);
+            temp.add(nums[i]);
+            helper(nums, i + 1, temp);
+        }
     }
 
     public static void main(String[] args) {
