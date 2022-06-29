@@ -93,3 +93,67 @@ class Solution {
     }
     
 }
+//****PALINDROME PARTITION****
+//Time complexity:n*2 res to n
+//Space complexity: o(n);
+
+class Solution {
+    List<List<String>> result;
+    public List<List<String>> partition(String s) 
+    {
+        result=new ArrayList<>();
+        //Null case 
+        if(s.length()==0 || s==null)
+        {
+            return result;
+        }
+        
+        helper(s, 0, new ArrayList<>());
+        return result;
+        
+    }
+    
+    private void helper(String s, int index, List<String> path)
+    {
+        //Base 
+        if(index==s.length())
+        {
+            result.add(new ArrayList<>(path));
+            return;
+        }
+        
+        //Logic
+        for(int i =index;i<s.length();i++)
+        {
+            String sub=s.substring(index,i+1);
+            if(isPalindrome(sub))
+            {
+                //Action
+                path.add(sub);
+                //Recurse
+                helper(s, i+1, path);
+                //BackTrack
+                path.remove(path.size()-1);
+                
+            }
+        }
+        
+        
+    }
+    
+    private boolean isPalindrome(String s)
+    {
+        int start =0;
+        int end=s.length()-1;
+        while(start<end)
+        {
+            if(s.charAt(start)!=s.charAt(end))
+            {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+}
