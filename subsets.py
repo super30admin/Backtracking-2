@@ -1,3 +1,7 @@
+"""Approach: 0/1 recursion
+TC O(2^N)
+SC  O(N) Recusion stack space
+"""
 class Solution:
     
     def subsets(self, nums: List[int]) -> List[List[int]]:
@@ -26,6 +30,10 @@ class Solution:
         path.pop()
 
 
+"""Approach: For Loop recursion
+TC O(2^N)
+SC  O(N) Recusion stack space
+"""
 
 class Solution:
     
@@ -48,7 +56,10 @@ class Solution:
             # backtrack
             path.pop()
 
-
+"""Approach: For loop - no recursion
+TC O(2^N)
+SC O(1) as all copy of list we will use add it to the path.
+"""
 class Solution:
     
     def subsets(self, nums: List[int]) -> List[List[int]]:
