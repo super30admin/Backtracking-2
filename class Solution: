@@ -1,0 +1,11 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        self.result=[]
+        self.helper(nums, 0, [])
+        return self.result
+    def helper(self, nums, index, path):
+        self.result.append(path[:])
+        for i in range(index, len(nums)):
+            path.append(nums[i])
+            self.helper(nums, i+1, path)
+            path.pop()
