@@ -1,0 +1,25 @@
+#time complexityo(n)
+#space complexity o(n)
+
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        
+        res=[]
+        stack=[]
+        
+        def recur(i):
+            if(i==len(s)):
+                res.append(stack[::])
+                return
+            
+            for j in range(i,len(s)):
+                ss=s[i:j+1]
+                if(ss[::-1]==ss):
+                    stack.append(ss)
+                    recur(j+1)
+                    stack.pop()
+                
+        
+        recur(0)
+        return res
+        
