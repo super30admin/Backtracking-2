@@ -1,0 +1,44 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        #timeComplexity:O(3^n), exponential;
+        #spaceComplexity:On(n)
+        result = [];
+        newlist = [];
+        if(nums == None or len(nums)==0):
+            return result;
+        def helper(nums: List[int],index:int,path:List[int]):
+            result.append(path);
+            for i in range(index,len(nums)):
+                newlist = path.copy();
+                newlist.append(nums[i]);
+                helper(nums,i+1,newlist);
+        helper(nums,0,[]);
+        return result;
+        
+  class Solution:
+    #timeComplexity:s^n;
+    #spaceComplexity:O(n)
+    def partition(self, s: str) -> List[List[str]]:
+        result = [];
+        if(s == None or len(s)==0):
+            return;
+        def isPalindrome(s:str,left,right):
+            while(left<=right):
+                if(s[left]!=s[right]):
+                    return False;
+                left = left+1;
+                right = right - 1;
+            return True;
+        def helper(s:str, index:int, path):
+            if(index==len(s)):
+                result.append(path.copy());
+                return;
+            for i in range(index,len(s)):
+                if(isPalindrome(s,index,i)):
+                    path.append(s[index:i+1]);
+                    helper(s,i+1,path);
+                    print(len(path));
+                    path.pop()
+        helper(s,0,[]);
+        return result;
+                
