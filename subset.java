@@ -78,3 +78,60 @@ class Solution {
   
     }
 }
+
+
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        //nums [], pivot = 0, path []
+        helper(nums, 0, new ArrayList<>());
+        return result;
+    }
+    
+    //For Loop Base Recursions
+    private void helper(int[] nums, int pivot, List<Integer> path){
+        //base
+        //we are coming out of the loop, after i < nums.length
+        //logic
+        System.out.println(path);
+        result.add(path);
+        for(int i = pivot; i < nums.length; i++){
+            List<Integer> temp = new ArrayList<>(path);
+            temp.add(nums[i]);
+            helper(nums, i+1,new ArrayList<>(temp));
+                
+        }
+    }
+}
+
+
+
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        //nums [], pivot = 0, path []
+        helper(nums, 0, new ArrayList<>());
+        return result;
+    }
+    
+    //For Loop Base Recursions by using Back Track
+    private void helper(int[] nums, int pivot, List<Integer> path){
+        //base
+        //we are coming out of the loop, after i < nums.length
+        //logic
+        //System.out.println(path);
+        result.add(path);
+        for(int i = pivot; i < nums.length; i++){
+   
+            path.add(nums[i]);
+            helper(nums, i+1,new ArrayList<>(path));
+            // System.out.println(path);
+            // System.out.println(path.remove(path.size()-1));
+            
+            path.remove(path.size()-1);
+                
+        }
+    }
+}
