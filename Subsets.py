@@ -1,5 +1,5 @@
-# Time Complexity : O(M * N * 3^L) Where L is the length of the word on M * N array
-#  Space Complexity : O(L) It would be the recursive stack. 
+# Time Complexity : O(N) Number of component in nums
+#  Space Complexity : O(N) Space taken by res
 #  Did this code successfully run on Leetcode : Yes
 #  Any problem you faced while coding this : N/A
 
