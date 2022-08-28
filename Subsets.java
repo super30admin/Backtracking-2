@@ -1,3 +1,8 @@
+// Time Complexity : O(2^n)
+// Space Complexity : O(n * 2^n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
 /*class Solution {
     List<List<Integer>> result;
     public List<List<Integer>> subsets(int[] nums) {
