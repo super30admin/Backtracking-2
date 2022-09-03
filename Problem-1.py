@@ -6,8 +6,8 @@ Solution:
     def subsets(self, nums):
         n is the length of nums
         h is height of tree
-        Time Complexity: O(n ^ 2) 
-        Space Complexity: O(n + h)
+        Time Complexity: O(2 ^ n) 
+        Space Complexity: O(h)
 '''
 class Solution(object):
     def subsets(self, nums):
