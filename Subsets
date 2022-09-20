@@ -1,0 +1,18 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        a = []
+        b = []
+        def Subsets(idx):
+            if idx >= len(nums):
+                a.append(b.copy())
+                return
+            b.append(nums[idx])
+            Subsets(idx + 1)
+            b.pop()
+            Subsets(idx+1)
+        Subsets(0)
+        return a
+    
+# Time Complexity: O(n * 2^n)
+# Space Complexity: O(2^n)
+# Successfully implemented on Leetcode
