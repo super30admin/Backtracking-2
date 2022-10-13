@@ -1,0 +1,37 @@
+class Solution {
+    List<List<String>> result=new ArrayList<>();
+    public List<List<String>> partition(String s) {
+        if(s.length()==0){
+            return result;
+        }
+        helper(s,0,new ArrayList<>());
+        return result;
+        
+    }
+    public void helper(String s, int pivot,List<String> li){
+        if(pivot>=s.length()){
+            result.add(new ArrayList(li));
+        }
+        for(int i=pivot;i<s.length();i++){
+            String str=s.substring(pivot,i+1);
+            if(isPalindrome(str)){
+                li.add(str);
+                helper(s,i+1,li);
+                li.remove(li.size()-1);
+            }
+        }
+      
+    }
+    public boolean isPalindrome(String str){
+        int start=0;
+        int end=str.length()-1;
+        while(start<=end){
+            if(str.charAt(start)!=str.charAt(end)){
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+}
