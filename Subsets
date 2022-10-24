@@ -1,0 +1,25 @@
+class Solution {
+    
+    private:
+    void recursion( vector<int> nums, vector<int>& parts, vector<vector<int>>& ans, int index){
+        
+        if(index >= nums.size()){
+            ans.push_back(parts);
+            return;
+        }
+        //exclude
+        recursion(nums, parts, ans, index+1);
+        //include
+        parts.push_back(nums[index]);
+        recursion(nums, parts, ans, index+1);
+        parts.pop_back();
+        
+    }
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        vector<int> parts;
+        recursion(nums, parts,ans,0);
+        return ans;
+    }
+};
