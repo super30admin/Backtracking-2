@@ -13,7 +13,7 @@
  * Create substring and check if palindrome, if so then we add it to the path and run the recursive call
  */
 class Solution {
-    List<List<String>> result;
+    private List<List<String>> result;
 
     public List<List<String>> partition(String s) {
         result = new ArrayList<>();

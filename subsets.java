@@ -9,7 +9,7 @@
  * BUt before choose , we have to create a sublist of path reference and then add new number to it and pass it to the helper function for next recursive call
 */
 class Solution {
-    List<List<Integer>> result;
+    private List<List<Integer>> result;
 
     public List<List<Integer>> subsets(int[] nums) {
         result = new ArrayList<>();
@@ -54,7 +54,7 @@ class Solution {
  * It reduces the need of creating a new Array list for every level.
  */
 class Solution {
-    List<List<Integer>> result;
+    private List<List<Integer>> result;
 
     public List<List<Integer>> subsets(int[] nums) {
         result = new ArrayList<>();
@@ -99,7 +99,7 @@ class Solution {
  * is stationary and i is moving in the for loop based approach
  */
 class Solution {
-    List<List<Integer>> result;
+    private List<List<Integer>> result;
 
     public List<List<Integer>> subsets(int[] nums) {
         result = new ArrayList<>();
@@ -139,7 +139,7 @@ class Solution {
  * is stationary and i is moving in the for loop based approach
  */
 class Solution {
-    List<List<Integer>> result;
+    private List<List<Integer>> result;
 
     public List<List<Integer>> subsets(int[] nums) {
         result = new ArrayList<>();
