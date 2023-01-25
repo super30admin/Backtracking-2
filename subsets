@@ -1,0 +1,89 @@
+// 0 - 1 based recursion
+
+// Time Complexity : O(2 ^ N)
+// Space Complexity : O(N)
+// Did this code successfully run in leetcode : Yes
+// Any problems faced : No
+
+class Solution {
+public:
+    vector<vector<int>> result;
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> paths;
+        helper(nums, 0, paths);
+        return result;
+    }
+
+    void helper(vector<int>& nums, int i, vector<int> paths) {
+        if(i == nums.size()) { // reaches out of bounds
+            result.push_back(paths);
+            return;
+        }
+
+        // no choose
+        helper(nums, i + 1, paths);
+
+        // choose
+        paths.push_back(nums[i]);
+        helper(nums, i + 1, paths); // element can only be used once
+
+        // backtracking
+        paths.pop_back();
+    }
+};
+
+
+// For loop based recursion
+
+// Time Complexity : O(2 ^ n)
+// Space Complexity : O(N)
+// Did this code successfully run in leetcode : Yes
+// Any problems faced : No
+
+class Solution {
+public:
+    vector<vector<int>> result;
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> paths;
+        helper(nums, 0, paths);
+        return result;
+    }
+
+    void helper(vector<int>& nums, int pivot, vector<int> paths) {
+        // no base condition because for loop will take care of out of bounds condition
+
+        result.push_back(paths);
+        for(int i = pivot; i < nums.size(); i++) {
+            paths.push_back(nums[i]);
+            helper(nums, i + 1, paths); // pivot will be the next element
+            paths.pop_back(); // backtracking
+        }
+    }
+};
+
+
+// iterative approach
+
+// Time Complexity : n * (2 ^ (n - 1)) -> O(2 ^ n)
+// Space Complexity : O(n)
+// Did this code successfully run in leetcode : Yes
+// Any problems faced : No
+
+// using two for loops - one for iterating over the given array and other for iterating over the result array and push the current element to all the lists in it by creating a deepcopy of them.
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> result;
+        vector<int> paths;
+        result.push_back({});
+        for(int i = 0; i < nums.size(); i++) {
+            int size = result.size(); // result array is dynamic
+            for(int j = 0; j < size; j++) {
+                paths = result[j]; // deep copy
+                paths.push_back(nums[i]);
+                result.push_back(paths);
+            }
+        }
+        return result;
+    }
+};

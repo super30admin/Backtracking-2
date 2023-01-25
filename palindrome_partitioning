@@ -1,0 +1,42 @@
+// Time Complexity : O(2 ^ n)
+// Space Complexity : O(N)
+// Did this code successfully run in leetcode : Yes
+// Any problems faced : No
+
+// For loop based recursion
+class Solution {
+public:
+    vector<vector<string>> result;
+    vector<vector<string>> partition(string s) {
+        vector<string> paths;
+        helper(s, 0, paths);
+        return result;
+    }
+
+    bool isPalindrome(string s) {
+        string rev = "";
+        for(int i = s.size() - 1; i >= 0; i--) {
+            rev += s[i];
+        }
+        return rev == s;
+    }
+
+    void helper(string s, int pivot, vector<string> paths) {
+        if(pivot == s.size()) {
+            result.push_back(paths);
+        }
+        for(int i = pivot; i < s.size(); i++) {
+            string sub = s.substr(pivot, i - pivot + 1);  // first param in substr is the starting idx and sec param is the length of the substring
+            if(isPalindrome(sub)) {  // only add if the substring is a palindrome
+                // action
+                paths.push_back(sub);
+
+                // recurse
+                helper(s, i + 1, paths);
+
+                // backtrack
+                paths.pop_back();
+            }
+        }
+    }
+};
