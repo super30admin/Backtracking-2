@@ -1,5 +1,5 @@
 // Time Complexity : O(N * 2^N) where N is size of string
-// Space Complexity : O(N), size of string
+// Space Complexity : O(N), size of string (stack size)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 
