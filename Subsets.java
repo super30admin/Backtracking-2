@@ -1,4 +1,6 @@
 class Solution {
+	//Time: O(n * 2^n); At every point of the string we make 2 choices and we also copy the string to the output for which we have to go over the string.
+	//Space: O(n)
     List<List<Integer>> result;
     public List<List<Integer>> subsets(int[] nums) {
         result = new LinkedList<>();
