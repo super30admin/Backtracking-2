@@ -1,0 +1,23 @@
+/**
+Time Complexity - O(N * 2 ^ N) 
+Space Complexity - O(N) max depth of the stack space in recursion.
+ */
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        LinkedList<Integer> subset = new LinkedList<Integer>();
+
+        getSubsets(nums, 0, subset, result);
+        result.add(new ArrayList<Integer>());
+        return result;
+    }
+
+    public void getSubsets(int[] nums, int index, LinkedList<Integer> subset, List<List<Integer>> result) {
+        for(int start = index; start < nums.length; start ++){
+            subset.add(nums[start]);
+            result.add(new ArrayList<Integer>(subset));
+            getSubsets(nums, start + 1, subset, result);
+            subset.removeLast();
+        }
+    }
+}
