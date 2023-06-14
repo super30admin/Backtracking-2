@@ -1,3 +1,4 @@
+// ******************** For loop with backtracking ********************
 // Time Complexity:           O(n * 2^n)
 // Space Complexity:          O(n)
 // where n is length of given String
@@ -42,9 +43,52 @@ class SolutionSubsets {
 
 
 
+// // ******************** For loop without backtracking ********************
+// // ****************************** Another Approach ******************************
+// // Time Complexity:           O(n * 2^n)
+// // Space Complexity:          O(n)
+// // where n is length of given String
+
+// // without backtracking, creating new list for every recursion
+
+// class Solution {
+
+//     List<List<Integer>> result;
+
+//     public List<List<Integer>> subsets(int[] nums) {
+
+//         result = new ArrayList<>();
+//         helper(nums, 0, new ArrayList<>());
+//         return result;
+        
+//     }
+
+//     private void helper(int[] nums, int index, List<Integer> path) {
+
+//         // base
+//         // logic
+//         result.add(path);
+
+//         // for loop
+//         for(int i=index; i<nums.length; i++) {
+
+//             // choose
+//             List<Integer> temp = new ArrayList<>(path);
+//             temp.add(nums[i]);
+//             helper(nums, i+1, temp);
+
+//         }
+
+//     }
+
+// }
 
 
 
+
+
+
+// // ******************** simple choose, no choose with backtracking ********************
 // // ****************************** Another Approach ******************************
 // // Time Complexity:           O(n * 2^n)
 // // Space Complexity:          O(n)
@@ -93,6 +137,9 @@ class SolutionSubsets {
 
 
 
+
+
+// // ******************** simple choose, no choose without backtracking ********************
 // // ****************************** Another Approach ******************************
 // // Time Complexity:           O(n * 2^n)
 // // Space Complexity:          O(n)
@@ -135,6 +182,11 @@ class SolutionSubsets {
 // }
 
 
+
+
+
+
+// // ******************** simple choose, no choose with backtracking ********************
 // // ****************************** Another Approach ******************************
 // // Time Complexity:           O(n * 2^n)
 // // Space Complexity:          O(n)
