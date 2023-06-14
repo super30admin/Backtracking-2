@@ -45,6 +45,8 @@ class SolutionSubsets {
 
 // // ******************** without recursion, iterative approach ********************
 // // ****************************** Another Approach ******************************
+// // Time Complexity:           O(2^n)
+// // Space Complexity:          O(n)
 
 // class Solution {
 
