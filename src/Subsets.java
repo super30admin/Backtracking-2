@@ -43,6 +43,48 @@ class SolutionSubsets {
 
 
 
+// // ******************** without recursion, iterative approach ********************
+// // ****************************** Another Approach ******************************
+
+// class Solution {
+
+//     List<List<Integer>> result;
+
+//     public List<List<Integer>> subsets(int[] nums) {
+
+//         result = new ArrayList<>();                                        // defining result
+//         result.add(new ArrayList<>());                                     // Adding [] in result
+        
+//         for(int i=0; i<nums.length; i++) {
+
+//             int val = nums[i];                                             // getting current value to be added in all lists in result
+
+//             int size = result.size();                                      // getting size of result
+
+//             for(int j=0; j<size; j++) {                                    // adding current value to all lists in result
+
+//                 List<Integer> temp = new ArrayList<>(result.get(j));       // getting all lists one by one
+//                 temp.add(val);                                             // adding current value
+//                 result.add(temp);                                          // adding updated list in result
+
+//             }
+
+//         }
+
+//         return result;
+        
+//     }
+
+// }
+
+
+
+
+
+
+
+
+
 // // ******************** For loop without backtracking ********************
 // // ****************************** Another Approach ******************************
 // // Time Complexity:           O(n * 2^n)
