@@ -1,4 +1,4 @@
-#Time: O(2^n)
+#Time: O(n * 2^n)
 #Space: O(n)
 #issues faced: when candidate is appended as a list to the result, it is getting modified with the modification in the candidate
 #did the code run successfully on LC: yes
