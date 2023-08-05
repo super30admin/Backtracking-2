@@ -30,3 +30,24 @@ class Solution {
         helper(nums,i+1,new ArrayList<>(path));
     }
 }
+
+//For loop recurssion
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        helper(nums,0,new ArrayList<>(){});
+        return result;
+    }
+
+    public void helper(int[] nums,int pivot,List<Integer>paths){
+        //logic
+            result.add(paths);
+        //base
+        for(int i=pivot;i<nums.length;i++){
+            List<Integer> li = new ArrayList<>(paths);
+            li.add(nums[i]);
+            helper(nums, i+1, li);
+        }
+    }
+}
