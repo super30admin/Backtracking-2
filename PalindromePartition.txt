@@ -1,0 +1,44 @@
+/** Time Complexity O(2^N)
+Space Complexity - O(N)
+ */
+class Solution {
+    List<List<String>> results;
+    public List<List<String>> partition(String s) {
+        this.results = new ArrayList<>();
+        helper(s, 0, 0 , new ArrayList<>(), 0);
+        return results;
+    }
+
+    private void helper(String s, int pivot, int index, List<String> path, int sum) {
+        // base
+        if (index == s.length()) {
+            if (sum == s.length()) {
+                results.add(new ArrayList<>(path));
+            }
+            return;
+        }
+
+        // not choose
+        helper(s, pivot, index+1, path, sum);
+        // choose
+        String sub = s.substring(pivot, index+1);
+        if (isPalindrome(sub)) {
+            path.add(sub);
+            helper(s, index +1, index+1, path, sum + sub.length());
+            path.remove(path.size() -1);
+        }
+    }
+
+    private boolean isPalindrome(String s) {
+        int i = 0;
+        int j = s.length() -1;
+        while (i <j) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+}
