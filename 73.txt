@@ -1,0 +1,27 @@
+# Time Complexity : O(2^n)
+# Space Complexity : O(length of nums array)
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+
+        res = []
+
+        def helper(nums, path, idx):
+            nonlocal res
+            # Base
+            if idx == len(nums):
+                copy = [p for p in path]
+                res.append(copy)
+                return
+            # Dont choose
+            helper(nums, path, idx+1)
+            # Choose
+            path.append(nums[idx])
+            # Recurse
+            helper(nums, path, idx+1)
+            # Backtrack
+            path.remove(path[-1])
+
+
+        helper(nums, [], 0)
+        return res
