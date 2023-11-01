@@ -6,6 +6,7 @@
 # we used for loop based rcursion and go over each element, when we go over each element we add it ot he path and see if its a palindrome.
 # if its a plaindrome we recursively cehck for the rest of the string
 # if its not palindrome we dont go down that path
+#  we did 01 based recursion as well
 class Solution(object):
     def partition(self, s):
         """
@@ -41,3 +42,26 @@ class Solution(object):
         res=[]
         helper(s,0,[])
         return res
+
+         # 01 based recursion
+        # def helper(s,pivot,i,path):
+        #     # base
+        #     if(i==len(s)):
+        #         if(pivot==len(s)):
+        #             res.append(list(path))
+        #         return
+        #     # logic
+        #     # dont choose
+        #     helper(s,pivot,i+1,path)
+        #     # choose
+        #     subs=s[pivot:i+1]
+        #     # action
+        #     if(palindrome(subs)):
+        #         path.append(subs)
+        #         # recurse
+        #         helper(s,i+1, i+1, path)
+        #         # backtrack
+        #         path.pop()
+        # res=[]
+        # helper(s,0,0,[])
+        # return res
