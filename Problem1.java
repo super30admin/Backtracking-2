@@ -1,3 +1,6 @@
+//Time Complexity  : O(2^n)
+//Space Complexity : O(n)
+
 class Solution {
     List<List<Integer>> result;
     public List<List<Integer>> subsets(int[] nums) {
