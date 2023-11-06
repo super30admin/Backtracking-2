@@ -1,0 +1,19 @@
+#time complexity: O(2^n)
+#space complexity: O(n)
+#did it run on leetcode: yes
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        result = []
+        twos = []
+
+        def helper_method(start):
+            result.append(twos[:])
+
+            for i in range(start, len(nums)):
+                if nums[i] not in twos:
+                    twos.append(nums[i])
+                    helper_method(i + 1)
+                    twos.pop()
+
+        helper_method(0)
+        return result
