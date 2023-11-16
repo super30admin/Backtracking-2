@@ -1,0 +1,38 @@
+class Solution {
+    public List<List<String>> partition(String s) 
+    {
+        List<List<String>> res = new ArrayList<>();
+        dfs(s, 0, new ArrayList<>(), res);
+        return res;
+    }
+    
+    private void dfs(String s, int left, List<String> path, List<List<String>> res)
+    {
+        if (left == s.length())
+        {
+            res.add(new ArrayList<>(path));
+            return;
+        }
+        for (int right = left; right < s.length(); ++right)
+        {
+            if (isValidate(s, left, right))
+            {
+                path.add(s.substring(left, right + 1));
+                dfs(s, right + 1, path, res);
+                path.remove(path.size() - 1);
+            }
+        }
+    }
+    
+    private boolean isValidate(String s, int left, int right)
+    {
+        while (left <= right)
+        {
+            if (s.charAt(left++) != s.charAt(right--))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}
