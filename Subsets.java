@@ -1,4 +1,4 @@
-// Time Complexity : O(n)
+// Time Complexity : O(2 pow n)
 // Space Complexity : O(h)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : -
