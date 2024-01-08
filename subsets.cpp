@@ -3,8 +3,8 @@ class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) 
     {
-       
-       helper(nums,  vector<int> path, 0);
+       vector<int> temp;
+       helper(nums, temp , 0);
 
        return result; 
     }
@@ -21,11 +21,12 @@ public:
 
         //choose
         path.push_back(nums[i]);
-        helper(nums,  vector<int> path, i+1);
-        path.remove(path.size() - 1);
+        
+        helper(nums,path  , i+1);
+        path.pop_back();
         
         //dont choose
-        helper(nums, vector<int> path, i+1 );
+        helper(nums, path, i+1 );
 
     }
 };
