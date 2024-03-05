@@ -1,3 +1,7 @@
+'''
+TC: O(N*2^N) - to generate all subsets and create deep copy for every subset created. 
+SC: O(N*2^N)
+'''
 from typing import List
 
 class Solution:
