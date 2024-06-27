@@ -1,0 +1,34 @@
+Backtrack: T.c --> n*2^n S.c --> O(n)
+class Solution {
+    List<List<Integer>> result = new ArrayList<>();
+    public List<List<Integer>> subsets(int[] nums) {        
+        backtrack(0,nums,new ArrayList<>());
+        return result;
+    }
+    private void backtrack(int index,int[] nums,List<Integer> path){
+        result.add(new ArrayList<>(path));
+        for(int i =index; i<nums.length; i++){
+            path.add(nums[i]);
+            backtrack(i+1,nums,path);
+            path.remove(path.size()-1);
+        }
+    }
+}
+
+*********************************************************************
+Recurse: T.c --> n*2^n S.c --> O(n)
+class Solution {
+    List<List<Integer>> result = new ArrayList<>();
+    public List<List<Integer>> subsets(int[] nums) {        
+        recurse(0,nums,new ArrayList<>());
+        return result;
+    }
+    private void recurse(int index,int[] nums,List<Integer> path){
+        result.add(path);
+        for(int i =index; i<nums.length; i++){
+            List<Integer> newList = new ArrayList<>(path);
+            newList.add(nums[i]);
+            recurse(i+1,nums,newList);            
+        }
+    }
+}

@@ -1,0 +1,68 @@
+Recursion: T.c --> n*2^n , S.c --> O(n), where n --> length of the string.
+
+class Solution {
+    List<List<String>> result = new ArrayList<>();
+    public List<List<String>> partition(String s) {        
+        recurse(s,0,new ArrayList<>());
+        return result;
+    }
+    private void recurse(String s, int index, List<String> path){
+        //base
+        if(s.length() == index){
+          result.add(path);
+        }
+        for(int i=index; i<s.length(); i++){
+          if(isPalindrome(s,index,i)){  
+            List<String> newList = new ArrayList<>(path);          
+            newList.add(s.substring(index,i+1));
+            recurse(s,i+1,newList);
+          }
+        }
+    }
+    private boolean isPalindrome(String s, int l , int r){
+       while(l<r){
+        if(s.charAt(l) != s.charAt(r)){
+           return false;
+        }
+        l++;
+        r--; 
+       }
+       return true;
+    }
+}
+
+**************************************************
+Backtrack: 
+class Solution {
+    List<List<String>> result = new ArrayList<>();
+    public List<List<String>> partition(String s) {        
+        backtrack(s,0,new ArrayList<>());
+        return result;
+    }
+    private void backtrack(String s, int index, List<String> path){
+        //base
+        if(s.length() == index){
+          result.add(new ArrayList<>(path));
+        }
+        for(int i=index; i<s.length(); i++){
+          if(isPalindrome(s,index,i)){  
+            //action
+            path.add(s.substring(index,i+1));
+            //recurse
+            backtrack(s,i+1,path);
+            //backtrack
+            path.remove(path.size()-1);
+          }
+        }
+    }
+    private boolean isPalindrome(String s, int l , int r){
+       while(l<r){
+        if(s.charAt(l) != s.charAt(r)){
+           return false;
+        }
+        l++;
+        r--; 
+       }
+       return true;
+    }
+}
