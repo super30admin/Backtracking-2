@@ -1,0 +1,82 @@
+// Time Complexity :O(n*2^n)
+// Space Complexity :O(n*2^n)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach: for loop recursion where i take pivot as zero and done the recursion and for loop as well while adding substring to path just checking whetaher the substring is palindrom eor not if it is then only moving forward.
+
+class Solution {
+    List<List<String>> result=new ArrayList<>();
+    public List<List<String>> partition(String s) {
+       List<String> path=new ArrayList<>();
+        helper(s,0,path);
+        return result;
+    }
+    public void helper(String s,int pivot,List<String> path){
+        if(pivot == s.length()){
+            result.add(new ArrayList<>(path)); //creating deep copy for each path
+            return ;
+        }
+           for(int i=pivot;i<s.length();i++){
+                String currStr=s.substring(pivot,i+1);   //substring from pivot to index+1
+                if(isPalindrom(currStr,0,currStr.length()-1)){ //checking wheater its isPalindrom or not
+                    path.add(currStr); //action
+                     helper( s,i+1,path); //recursion
+                    path.remove(path.size()-1); //backtracking
+                }
+                 }
+    }
+    public boolean isPalindrom(String currStr,int l,int h){ 
+        while(l < h){
+            if(currStr.charAt(l) != currStr.charAt(h)) return false;
+            l++;
+            h--;
+        }
+        return true;
+    }
+}
+
+
+
+// Time Complexity :O(n*2^n)
+// Space Complexity :O(n*2^n)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach:here recusrion based approach where taking pivot and index as zero initially and taking substring from pivot to index and checking wheather it is a palindrome or not ,if it is then only adding it to path as well using count variable to where i encounter leaf node just chekcing my string length is equal to my count are not 
+// if it is then only adding it to result because we dont miss any element from given string 
+class Solution {
+    List<List<String>> result=new ArrayList<>();
+    public List<List<String>> partition(String s) {
+       List<String> path=new ArrayList<>();
+        helper(s,0,0,path,0);
+        return result;
+    }
+    public void helper(String s,int index,int pivot, List<String> path,int count){ // recursion with index and pivot zero
+        if(index == s.length()){
+            if(count == s.length() ){
+                result.add(new ArrayList<>(path)); //adding result to path only if the count is equal to string length(we dont miss any ele from string)
+            }
+            return;
+        }
+        helper(s,index+1,pivot,path,count); //not incrementing pivot because we are not choosing 
+        String subStr=s.substring(pivot,index+1); 
+        if(isPalindrom(subStr,0,subStr.length()-1)){
+            path.add(subStr); // adding subStr to path
+            int newCount=count+subStr.length();//count increment
+              helper(s,index+1,index+1,path,newCount); //incrementing index and pivot by one because its choose case 
+               path.remove(path.size()-1); //backtrack
+        }
+    }
+ 
+    public boolean isPalindrom(String currStr,int l,int h){
+        while(l < h){
+            if(currStr.charAt(l) != currStr.charAt(h)) return false;
+            l++;
+            h--;
+        }
+        return true;
+    }
+}

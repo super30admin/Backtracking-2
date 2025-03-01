@@ -1,0 +1,59 @@
+// Time Complexity :O(n*2^n)
+// Space Complexity :O(n*2^n)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach: here is the recursive approach by choosing and not choosing where i choose element i am just adding that to list and deepcopying the path into every element
+
+
+class Solution {
+     List<List<Integer>> result=new ArrayList<>();
+      public List<List<Integer>> subsets(int[] nums) {
+        List<Integer> path=new ArrayList<>();
+        int n=nums.length;
+        helper(nums,path,0);
+        return result;
+    }
+    public void helper(int[] nums,List<Integer> path,int index){
+         if(index == nums.length){
+            result.add(path);
+            return;
+         }    
+        //not choose
+        helper(nums,path,index+1);
+        //cho0se
+        List<Integer> li=new ArrayList<>(path); // deep coping for each and every element to avoid call by reference issue
+        li.add(nums[index]);
+        helper(nums,li,index+1);
+
+    }
+}
+
+
+// Time Complexity :O(2^n)
+// Space Complexity :O(2^n)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach:for loop approach where i start my pivot from zero and implement for loop as well to avoid call by reference issue used backtracking approach after adding elemetn to path and done recursion on that then i remove element from path.
+
+class Solution {
+    List<List<Integer>> result=new ArrayList<>();
+     public List<List<Integer>> subsets(int[] nums) { 
+       List<Integer> path=new ArrayList<>(); //initializing path 
+       int n=nums.length;
+       helper(nums,path,0); // recurion by taking pivot as zero
+       return result;
+   }
+   public void helper(int[] nums,List<Integer> path,int pivot){
+       //not choose
+       for(int i=pivot;i<nums.length;i++){ 
+              path.add(nums[i]); //action
+              helper(nums,path,i+1); //recursion 
+              path.remove(path.size()-1); //backtracking
+       }
+        result.add(new ArrayList<>(path));  // when i becomes nums.length then adding path to result, deep copying for evary path to avoid call by reference issue
+   }
+}
