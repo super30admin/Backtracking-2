@@ -1,0 +1,20 @@
+#time: O(n*(2^n))
+#space: O(n*(2^n))
+
+class Solution(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        result = []
+
+        def backtrack(start, path):
+            result.append(path[:])  # Append a copy of the current path (subset)
+            for i in range(start, len(nums)):
+                path.append(nums[i])           # Choose
+                backtrack(i + 1, path)         # Explore
+                path.pop()                     # Un-choose (backtrack)
+
+        backtrack(0, [])
+        return result
