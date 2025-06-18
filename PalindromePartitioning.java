@@ -3,7 +3,7 @@
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 // Approach : Using 0-1 based recursion, for each character, either try to create substring from pivot to i (if it is palindrome,
-// add to path else return) or just go to next element. This way we get app possible substring partitions of input string
+// add to path else return) or just go to next element. This way we get all possible substring partitions of input string
 // and if the resultant substring is palindrome, we add it to result.
 
 import java.util.*;
