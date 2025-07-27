@@ -1,0 +1,22 @@
+class Solution {
+    List<List<Integer>> result;
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        if(nums == null || nums.length == 0){
+            return result;
+        }
+        recurse(nums, 0, new ArrayList<>());
+        return result;
+    }
+
+    private void recurse(int[] nums, int index, List<Integer> path){
+        //base
+        //logic
+        result.add(path);
+        for(int i= index; i < nums.length; i++){
+            List<Integer> newList = new ArrayList<>(path);
+            newList.add(nums[i]);
+            recurse(nums, i+1, newList);
+        }
+    }
+}
