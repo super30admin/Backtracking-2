@@ -1,0 +1,30 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        if nums == None or len(nums) == 0:
+            return []
+        self.result = []
+        self.recurse(nums, 0, [])
+        return self.result
+    
+    def recurse(self, nums: List[int], pivot: int, path: List[int]) -> None:
+        #base
+
+        #logic
+        self.result.append([num for num in path])
+        for i in range(pivot, len(nums)):
+            #action
+            path.append(nums[i])
+            #recurse
+            self.recurse(nums, i + 1, path)
+            #backtrack
+            path.pop()
+
+        # #logic
+        # #case0
+        # self.recurse(nums, idx + 1, path)
+        # #case1
+        # path.append(nums[idx])
+        # #recurse
+        # self.recurse(nums, idx + 1, path)
+        # #backtrack
+        # path.pop()
