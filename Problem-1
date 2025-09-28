@@ -1,0 +1,28 @@
+// Time Complexity: O(n * 2^n)
+// Space Complexity: O(n)
+
+// Recursively call the function to create the subsets by choosing or not choosing a number
+// when choosing a number backtrack to get all subsets
+// Add all the subsets to the result list
+
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        helper(nums, 0, result, new ArrayList<>());
+        return result;
+    }
+
+    private void helper(int[] nums, int idx, List<List<Integer>> result, List<Integer> l) {
+        if(idx == nums.length) {
+            result.add(new ArrayList<>(l));
+            return;
+        }
+
+        // not choose
+        helper(nums, idx+1, result, l);
+        // choose
+        l.add(nums[idx]);
+        helper(nums, idx+1, result, l);
+        l.remove(l.size()-1);
+    }
+}

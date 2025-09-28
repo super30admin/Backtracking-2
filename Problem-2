@@ -1,0 +1,43 @@
+// Time complexity: O(n * 2^n)
+// Space compexity: O(n^2)
+
+// Starting from 0 create every substring and check if its a palindrome
+// If it is add to list and continue with the remaining string
+// When the whole string has been processed add list to the result
+
+class Solution {
+    public List<List<String>> partition(String s) {
+        List<List<String>> result = new ArrayList<>();
+        helper(s, 0, new ArrayList<>(), result);
+        return result;
+    }
+
+    private void helper(String s, int idx, List<String> list, List<List<String>> result) {
+        if(idx == s.length()) {
+            result.add(new ArrayList<>(list));
+            return;
+        }
+
+        for(int i = idx; i < s.length(); i++) {
+            String sub = s.substring(idx, i+1);
+            if(isPalindrome(sub)) {
+                list.add(sub);
+                helper(s, i+1, list, result);
+                list.remove(list.size()-1);
+            }
+        }
+    }
+
+    // Function to check if a string is a palindrome
+    private boolean isPalindrome(String s) {
+        int l = 0; 
+        int r = s.length()-1;
+        while(l < r) {
+            if(s.charAt(l) != s.charAt(r))
+                return false;
+            l++;
+            r--;
+        }
+        return true;
+    }
+}
