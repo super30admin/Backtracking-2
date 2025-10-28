@@ -1,0 +1,24 @@
+// We start with the empty subset in the result list.
+// For each number, we copy all current subsets and append the number to create new subsets.
+// This way, every element doubles the size of the list by being added to existing subsets.
+
+// time o(n * 2^n)
+// space o(n)
+
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        result.add(new ArrayList<>());
+
+        for (int i = 0; i < nums.length; i++) {
+            int size = result.size();
+            for (int j = 0; j < size; j++) {
+                List<Integer> temp = new ArrayList<>(result.get(j));
+                temp.add(nums[i]);
+                result.add(temp);
+            }
+        }
+
+        return result;
+    }
+}
