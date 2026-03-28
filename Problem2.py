@@ -1,3 +1,7 @@
+# Apace  -> On
+# Time NO(2^N)
+# Logic -> use helper and pivot to find all the partitions and validate if those are palindrome or not
+
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         result = []
@@ -5,12 +9,7 @@ class Solution:
         def isPalindrome(startIndex, endIndex):
             if startIndex >= endIndex: return True
             return s[startIndex] == s[endIndex] and isPalindrome(startIndex+1, endIndex-1)
-            # while left<=right:
-            #     if s[left]!=s[right]:
-            #         return False
-            #     left+=1
-            #     right-=1
-            return True
+
         def helper(pivot, partitionsList):
             if pivot == len(s):
                 result.append(partitionsList[:])

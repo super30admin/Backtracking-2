@@ -1,5 +1,9 @@
 #Subsets
 
+# use recrussion to create the possible subsets, use tmp result and keep on building on that for every recrussion and once crossed pop it
+# Time -> N2^N rrecrusion branching 2 options at step and then building the final result 
+# Space -> ON the tmpResult and the stack space
+
 from typing import List
 
 
